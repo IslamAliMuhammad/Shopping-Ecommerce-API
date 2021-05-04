@@ -15,6 +15,9 @@ class ProductController extends Controller
     public function index()
     {
         //
+        $products = Product::paginate(12);
+
+        return response()->json($products, 200);
     }
 
     /**
@@ -36,6 +39,18 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         //
+        $validated = $request->validate([
+            'id' => 'nullable|numeric',
+            'name' => 'required|string',
+            'description' => 'required|string',
+            'units' => 'required|numeric',
+            'price' => 'required|numeric',
+            'photo_path' => 'required|string',
+        ]);
+        
+        $product = Product::create($validated);
+
+        return response()->json($product, 201);
     }
 
     /**
@@ -44,9 +59,11 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    
+    public function show(Product $product) 
     {
         //
+        return response()->json($product);
     }
 
     /**
@@ -58,6 +75,7 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         //
+
     }
 
     /**
@@ -70,6 +88,9 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         //
+        $product->update($request->only(['name', 'description', 'units', 'price', 'photo_path']));
+
+        return response()->json(['message' => 'Product Updated!'], 200);
     }
 
     /**
@@ -81,5 +102,8 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         //
+        $product->delete();
+        
+        return response()->json(['message' => 'Product was deleted successfully'], 200);
     }
 }
