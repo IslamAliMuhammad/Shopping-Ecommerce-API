@@ -4,7 +4,9 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
-
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Illuminate\Validation\ValidationException;
+use Symfony\Component\Routing\Exception\RouteNotFoundException;
 class Handler extends ExceptionHandler
 {
     /**
@@ -37,5 +39,14 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+
+        $this->renderable(function (NotFoundHttpException $e, $request) {
+            return response()->json(['message' => 'Not Found'], 404);
+        });
+
+        $this->renderable(function (ValidationException $e, $request) {
+            return response()->json(['message' => 'Validation Errors', 'errors' => $e->validator->errors()], 422);
+        });
+
     }
 }

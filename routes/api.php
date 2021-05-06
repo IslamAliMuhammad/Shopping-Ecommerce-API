@@ -28,7 +28,8 @@ Route::get('/tokens/create', function () {
 });
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::resource('products', ProductController::class)->except(['index', 'show']);
+    Route::apiResource('products', ProductController::class)->except(['index', 'show']);
 });
 
-Route::resource('products', ProductController::class)->only(['index', 'show']);
+Route::apiResource('products', ProductController::class)->only(['index', 'show']);
+

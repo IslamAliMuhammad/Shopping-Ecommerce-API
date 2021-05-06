@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
-
 class ProductController extends Controller
 {
     /**
@@ -16,18 +15,8 @@ class ProductController extends Controller
     {
         //
         $products = Product::paginate(12);
-
+        
         return response()->json($products, 200);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -63,20 +52,10 @@ class ProductController extends Controller
     public function show(Product $product) 
     {
         //
+
         return response()->json($product);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Product $product)
-    {
-        //
-
-    }
 
     /**
      * Update the specified resource in storage.
