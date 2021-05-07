@@ -44,9 +44,5 @@ class Handler extends ExceptionHandler
             return response()->json(['message' => 'Not Found'], 404);
         });
 
-        $this->renderable(function (ValidationException $e, $request) {
-            return response()->json(['message' => 'Validation Errors', 'errors' => $e->validator->errors()], 422);
-        });
-
     }
 }

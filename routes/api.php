@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,16 +21,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/tokens/create', function () {
-    $user = User::find(1);
-    $token = $user->createToken('firstToken');
-
-    return ['token' => $token->plainTextToken];
-});
-
 Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('products', ProductController::class)->except(['index', 'show']);
 });
 
 Route::apiResource('products', ProductController::class)->only(['index', 'show']);
+
+Route::post('/login', [UserController::class, 'login'])->name('login');
+Route::post('/register', [UserController::class, 'register'])->name('register');
 
