@@ -62,4 +62,5 @@ class UserController extends Controller
 
         return response()->json(['error' => 'Internal Server Error'], 500);
     }
+
 }

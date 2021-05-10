@@ -38,8 +38,12 @@ class ProductController extends Controller
         ]);
         
         $product = Product::create($validated);
+        
+        if($product){
+            return response()->json($product, 201);
+        }
 
-        return response()->json($product, 201);
+        return response()->json(['error' => 'Internal Server Error'], 500);
     }
 
     /**
