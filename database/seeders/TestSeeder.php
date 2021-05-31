@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Product;
-use App\Models\ProductDetails;
+use App\Models\ProductDetail;
 use App\Models\Photo;
 
 class TestSeeder extends Seeder
@@ -18,11 +18,16 @@ class TestSeeder extends Seeder
     public function run()
     {
         //
-        $users = User::factory()->count(10)->create();
-        $products = Product::factory()->count(20)->create();
-        $productDetails = ProductDetails::factory()->count(5)->create();
-        $photos = Photo::factory()->count(5)->create();
+        User::factory()->count(10)->create();
 
-        dd($photos);
+        for($x = 0; $x < 10; $x++){
+            $productDetails = ProductDetail::factory()->count(5)->for(Product::factory())->create();
+
+            foreach($productDetails as $productDetail){
+                Photo::factory()->count(5)->for($productDetail)->create();
+            }
+        }
+       
     }
 }
+ 
