@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\User;
+use App\Models\Product;
 
 class TestSeeder extends Seeder
 {
@@ -16,6 +17,7 @@ class TestSeeder extends Seeder
     {
         //
         $users = User::factory()->count(10)->create();
-        dd($users);
+        $products = Product::factory()->count(20)->create();
+        dd($products);
     }
 }
