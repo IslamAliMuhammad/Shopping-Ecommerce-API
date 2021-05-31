@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Product;
 use App\Models\ProductDetails;
+use App\Models\Photo;
 
 class TestSeeder extends Seeder
 {
@@ -20,7 +21,8 @@ class TestSeeder extends Seeder
         $users = User::factory()->count(10)->create();
         $products = Product::factory()->count(20)->create();
         $productDetails = ProductDetails::factory()->count(5)->create();
+        $photos = Photo::factory()->count(5)->create();
 
-        dd($productDetails);
+        dd($photos);
     }
 }
