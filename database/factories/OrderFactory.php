@@ -5,7 +5,6 @@ namespace Database\Factories;
 use App\Models\Order;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\User;
-use App\Models\Product;
 class OrderFactory extends Factory
 {
     /**
@@ -24,10 +23,8 @@ class OrderFactory extends Factory
     {
         return [
             //
-            'product_id' => Product::factory(),
             'user_id' => User::factory(),
-            'quantity' => $this->faker->numberBetween(1, 200),
-            'address' => $this->faker->address(),
+            'is_delivered' => $this->faker->boolean(),
         ];
     }
 }

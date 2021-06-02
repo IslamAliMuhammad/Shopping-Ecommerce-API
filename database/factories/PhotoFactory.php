@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Photo;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\ProductDetails;
+use App\Models\ProductDetail;
 class PhotoFactory extends Factory
 {
     /**
@@ -23,7 +23,7 @@ class PhotoFactory extends Factory
     {
         return [
             //
-            'product_detail_id' => ProductDetails::factory(),
+            'product_detail_id' => ProductDetail::factory(),
             'path' => $this->faker->imageUrl(640, 480, 'product', true),
         ];
     }
