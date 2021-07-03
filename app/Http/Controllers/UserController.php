@@ -33,7 +33,7 @@ class UserController extends Controller
         }
        
         return response()->json(['error' => 'Internal Server Error'], 500);
-    }   
+      }   
 
     public function login(Request $request) {
         $credentials = $request->only('email', 'password'); 
