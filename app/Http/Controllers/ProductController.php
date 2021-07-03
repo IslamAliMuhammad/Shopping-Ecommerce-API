@@ -29,10 +29,10 @@ class ProductController extends Controller
     {
         //
         $validated = $request->validate([
-            'id' => 'nullable|numeric',
             'name' => 'required|string',
+            'category_id' => 'required|numeric|exists:categories,id',
+            'gender_id' => 'required|numeric|exists:genders,id',
             'description' => 'required|string',
-            'units' => 'required|numeric',
             'price' => 'required|numeric',
             'photo_path' => 'required|string',
         ]);
@@ -72,7 +72,6 @@ class ProductController extends Controller
     {
         //
         $product->update($request->only(['name', 'description', 'units', 'price', 'photo_path']));
-
         return response()->json(['message' => 'Product Updated!'], 200);
     }
 
