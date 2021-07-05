@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CartItems;
 use Illuminate\Http\Request;
+use App\Models\ProductDetail;
 
-class CartItemsController extends Controller
+
+class CartItemController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,6 +16,7 @@ class CartItemsController extends Controller
     public function index()
     {
         //
+        return response()->json(["productDetails" => auth()->user()->productDetails], 200);
     }
 
     /**
@@ -26,15 +28,25 @@ class CartItemsController extends Controller
     public function store(Request $request)
     {
         //
+        $productDetail = ProductDetail::find($request->product_detail_id);
+        $units = $productDetail->units;
+
+        $validated = $request->validate([
+            "product_detail_id" => "required|numeric|exists:product_details,id",
+            "quantity" => "required|numeric|max:$units"
+        ]);
+
+        auth()->user()->productDetails()->attach($request->product_detail_id, ['quantity' => $request->quantity]);
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\CartItems  $cartItems
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(CartItems $cartItems)
+    public function show($id)
     {
         //
     }
@@ -43,10 +55,10 @@ class CartItemsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\CartItems  $cartItems
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CartItems $cartItems)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -54,11 +66,12 @@ class CartItemsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\CartItems  $cartItems
+     * @param  int  $id for product details
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CartItems $cartItems)
+    public function destroy($productDetailId)
     {
         //
+        auth()->user()->productDetails()->detach($productDetailId);
     }
 }

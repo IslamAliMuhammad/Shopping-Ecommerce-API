@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use App\Models\ProductDetail;
+
 class ProductController extends Controller
 {
     /**
@@ -27,23 +30,38 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $validated = $request->validate([
+        // Validate and create product 
+        $validator = Validator::make($request->product, [
             'name' => 'required|string',
             'category_id' => 'required|numeric|exists:categories,id',
             'gender_id' => 'required|numeric|exists:genders,id',
             'description' => 'required|string',
             'price' => 'required|numeric',
             'photo_path' => 'required|string',
-        ]);
-        
-        $product = Product::create($validated);
-        
-        if($product){
-            return response()->json($product, 201);
-        }
+        ])->validate();
 
-        return response()->json(['error' => 'Internal Server Error'], 500);
+        $product = Product::create($validator);
+        
+        $productDetails = [];
+
+        foreach($request->product_details as $productDetail){
+            // Validate ad create product details for product was created
+            $validator = Validator::make($productDetail, [
+                'size' => 'required|string',
+                'color' => 'required|string',
+                'units' => 'required|numeric'
+            ])->validate();
+
+            $validator['product_id'] = $product->id;
+
+            $productDetail = ProductDetail::create($validator);
+
+            array_push($productDetails, $productDetail);
+        }
+       
+
+
+        return response()->json(['product' => $product, 'product_details' => $productDetails], 201);
     }
 
     /**
