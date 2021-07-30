@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -54,6 +55,7 @@ class OrderController extends Controller
     public function show(Order $order)
     {
         //
+
         return response()->json(['order' => $order], 200);
     }
 
@@ -67,6 +69,8 @@ class OrderController extends Controller
     public function update(Request $request, Order $order)
     {
         //
+        $this->authorize('update', $order);
+
         $validated = $request->validate([
             'is_delivered' => 'required|boolean',
         ]);
@@ -85,6 +89,8 @@ class OrderController extends Controller
     public function destroy(Order $order)
     {
         //
+        $this->authorize('delete', $order);
+
         $order->delete();
 
         return response()->json(['message' => 'Order successfully deleted '], 200);
