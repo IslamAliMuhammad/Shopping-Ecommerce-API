@@ -89,8 +89,19 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         //
-        $product->update($request->only(['name', 'description', 'units', 'price', 'photo_path']));
-        return response()->json(['message' => 'Product Updated!'], 200);
+
+        $validated = $request->validate([
+            'name' => 'nullable|string',
+            'category_id' => 'nullable|numeric|exists:categories,id',
+            'gender_id' => 'nullable|numeric|exists:genders,id',
+            'description' => 'required|string',
+            'description' => 'nullable|string',
+            'price' => 'nullable|numeric',
+            'photo_path' => 'nullable|string',
+        ]);
+
+        $product->update($validated);
+        return response()->json(['message' => 'Product successfully updated'], 200);
     }
 
     /**
@@ -104,6 +115,6 @@ class ProductController extends Controller
         //
         $product->delete();
         
-        return response()->json(['message' => 'Product was deleted successfully'], 200);
+        return response()->json(['message' => 'Product successfully deleted'], 200);
     }
 }
