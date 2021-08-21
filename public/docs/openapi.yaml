@@ -7,58 +7,11 @@ servers:
   -
     url: 'http://localhost'
 paths:
-  /api/cart_item:
-    get:
-      summary: 'Display a listing of the resource.'
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Authorization
-          description: ''
-          example: 'Bearer {API_TOKEN}'
-          schema:
-            type: string
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses:
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
-      tags:
-        - cart_items
+  /api/login:
     post:
-      summary: 'Store a newly created resource in storage.'
+      summary: ''
       description: ''
       parameters:
-        -
-          in: header
-          name: Authorization
-          description: ''
-          example: 'Bearer {API_TOKEN}'
-          schema:
-            type: string
         -
           in: header
           name: Content-Type
@@ -75,7 +28,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - cart_items
+        - users
       requestBody:
         required: true
         content:
@@ -83,107 +36,23 @@ paths:
             schema:
               type: object
               properties:
-                product_detail_id:
-                  type: number
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: equitzon@example.org
+                password:
+                  type: string
                   description: ''
-                  example: 95.59974
-                quantity:
-                  type: numeric
-                  description: ''
-                  example: nisi
+                  example: delectus
               required:
-                - product_detail_id
-                - quantity
-  '/api/cart_item/{id}':
-    delete:
-      summary: 'Remove the specified resource from storage.'
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Authorization
-          description: ''
-          example: 'Bearer {API_TOKEN}'
-          schema:
-            type: string
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses: {  }
-      tags:
-        - cart_items
-    parameters:
-      -
-        in: path
-        name: id
-        description: 'The ID of the cart item.'
-        example: quis
-        required: true
-        schema:
-          type: string
-  /api/orders:
-    get:
-      summary: 'Display a listing of the resource.'
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Authorization
-          description: ''
-          example: 'Bearer {API_TOKEN}'
-          schema:
-            type: string
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses:
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
-      tags:
-        - orders
+                - email
+                - password
+      security: []
+  /api/register:
     post:
-      summary: 'Store a newly created resource in storage.'
+      summary: ''
       description: ''
       parameters:
-        -
-          in: header
-          name: Authorization
-          description: ''
-          example: 'Bearer {API_TOKEN}'
-          schema:
-            type: string
         -
           in: header
           name: Content-Type
@@ -200,76 +69,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - orders
-  '/api/orders/{id}':
-    get:
-      summary: 'Display the specified resource.'
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Authorization
-          description: ''
-          example: 'Bearer {API_TOKEN}'
-          schema:
-            type: string
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses:
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
-      tags:
-        - orders
-    put:
-      summary: 'Update the specified resource in storage.'
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Authorization
-          description: ''
-          example: 'Bearer {API_TOKEN}'
-          schema:
-            type: string
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses: {  }
-      tags:
-        - orders
+        - users
       requestBody:
         required: true
         content:
@@ -277,49 +77,28 @@ paths:
             schema:
               type: object
               properties:
-                is_delivered:
-                  type: boolean
+                name:
+                  type: string
                   description: ''
-                  example: false
+                  example: officiis
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: haley.fae@example.org
+                password:
+                  type: string
+                  description: ''
+                  example: culpa
+                password_confirmation:
+                  type: string
+                  description: ''
+                  example: maxime
               required:
-                - is_delivered
-    delete:
-      summary: 'Remove the specified resource from storage.'
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Authorization
-          description: ''
-          example: 'Bearer {API_TOKEN}'
-          schema:
-            type: string
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses: {  }
-      tags:
-        - orders
-    parameters:
-      -
-        in: path
-        name: id
-        description: 'The ID of the order.'
-        example: 14
-        required: true
-        schema:
-          type: integer
+                - name
+                - email
+                - password
+                - password_confirmation
+      security: []
   /api/products:
     post:
       summary: 'Store a newly created resource in storage.'
@@ -364,27 +143,27 @@ paths:
                     name:
                       type: string
                       description: ''
-                      example: quos
+                      example: aut
                     category_id:
                       type: numeric
                       description: ''
-                      example: ea
+                      example: voluptatem
                     gender_id:
                       type: numeric
                       description: ''
-                      example: omnis
+                      example: molestiae
                     description:
                       type: string
                       description: ''
-                      example: sunt
+                      example: explicabo
                     price:
                       type: numeric
                       description: ''
-                      example: rem
+                      example: fuga
                     photo_path:
                       type: string
                       description: ''
-                      example: inventore
+                      example: fuga
                 product_details:
                   type: array
                   description: ''
@@ -397,15 +176,15 @@ paths:
                       size:
                         type: string
                         description: ''
-                        example: nesciunt
+                        example: quaerat
                       color:
                         type: string
                         description: ''
-                        example: aperiam
+                        example: nisi
                       units:
                         type: numeric
                         description: ''
-                        example: harum
+                        example: dolores
                     required:
                       - size
                       - color
@@ -612,7 +391,7 @@ paths:
                   per_page: 12
                   prev_page_url: null
                   to: 12
-                  total: 63
+                  total: 71
                 properties:
                   current_page:
                     type: integer
@@ -820,7 +599,7 @@ paths:
                     example: 12
                   total:
                     type: integer
-                    example: 63
+                    example: 71
       tags:
         - products
       security: []
@@ -863,27 +642,27 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: laborum
+                  example: iste
                 category_id:
                   type: number
                   description: ''
-                  example: 3.5747
+                  example: 4.795444
                 gender_id:
                   type: number
                   description: ''
-                  example: 44598.79488
+                  example: !!float 459
                 description:
                   type: string
                   description: ''
-                  example: quidem
+                  example: doloremque
                 price:
                   type: number
                   description: ''
-                  example: 3852618.4307818
+                  example: 1274238.2580099
                 photo_path:
                   type: string
                   description: ''
-                  example: molestiae
+                  example: aperiam
     delete:
       summary: 'Remove the specified resource from storage.'
       description: ''
@@ -987,15 +766,62 @@ paths:
         in: path
         name: id
         description: 'The ID of the product.'
-        example: 3
+        example: 7
         required: true
         schema:
           type: integer
-  /api/login:
-    post:
-      summary: ''
+  /api/cart_item:
+    get:
+      summary: 'Display a listing of the resource.'
       description: ''
       parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {API_TOKEN}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - cart_items
+    post:
+      summary: 'Store a newly created resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {API_TOKEN}'
+          schema:
+            type: string
         -
           in: header
           name: Content-Type
@@ -1012,7 +838,7 @@ paths:
             type: string
       responses: {  }
       tags:
-        - users
+        - cart_items
       requestBody:
         required: true
         content:
@@ -1020,23 +846,29 @@ paths:
             schema:
               type: object
               properties:
-                email:
-                  type: string
-                  description: 'Must be a valid email address.'
-                  example: hollie62@example.net
-                password:
-                  type: string
+                product_detail_id:
+                  type: number
                   description: ''
-                  example: iste
+                  example: !!float 1
+                quantity:
+                  type: numeric
+                  description: ''
+                  example: quod
               required:
-                - email
-                - password
-      security: []
-  /api/register:
-    post:
-      summary: ''
+                - product_detail_id
+                - quantity
+  '/api/cart_item/{id}':
+    delete:
+      summary: 'Remove the specified resource from storage.'
       description: ''
       parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {API_TOKEN}'
+          schema:
+            type: string
         -
           in: header
           name: Content-Type
@@ -1053,7 +885,154 @@ paths:
             type: string
       responses: {  }
       tags:
-        - users
+        - cart_items
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the cart item.'
+        example: nostrum
+        required: true
+        schema:
+          type: string
+  /api/orders:
+    get:
+      summary: 'Display a listing of the resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {API_TOKEN}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - orders
+    post:
+      summary: 'Store a newly created resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {API_TOKEN}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - orders
+  '/api/orders/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {API_TOKEN}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - orders
+    put:
+      summary: 'Update the specified resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {API_TOKEN}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - orders
       requestBody:
         required: true
         content:
@@ -1061,28 +1040,49 @@ paths:
             schema:
               type: object
               properties:
-                name:
-                  type: string
+                is_delivered:
+                  type: boolean
                   description: ''
-                  example: libero
-                email:
-                  type: string
-                  description: 'Must be a valid email address.'
-                  example: juwan.hegmann@example.com
-                password:
-                  type: string
-                  description: ''
-                  example: minus
-                password_confirmation:
-                  type: string
-                  description: ''
-                  example: ducimus
+                  example: false
               required:
-                - name
-                - email
-                - password
-                - password_confirmation
-      security: []
+                - is_delivered
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {API_TOKEN}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - orders
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the order.'
+        example: 15
+        required: true
+        schema:
+          type: integer
 components:
   securitySchemes:
     default:

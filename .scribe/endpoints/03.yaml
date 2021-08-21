@@ -1,71 +1,129 @@
-name: users
+name: orders
 description: ''
 endpoints:
   -
     httpMethods:
-      - POST
-    uri: api/login
+      - GET
+    uri: api/orders
     metadata:
-      title: ''
+      title: 'Display a listing of the resource.'
       description: ''
-      authenticated: false
+      authenticated: true
     headers:
+      Authorization: 'Bearer {API_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
     queryParameters: []
-    bodyParameters:
-      email:
-        name: email
-        description: 'Must be a valid email address.'
-        required: true
-        example: hollie62@example.net
-        type: string
-      password:
-        name: password
-        description: ''
-        required: true
-        example: iste
-        type: string
-    responses: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
     responseFields: []
   -
     httpMethods:
       - POST
-    uri: api/register
+    uri: api/orders
     metadata:
-      title: ''
+      title: 'Store a newly created resource in storage.'
       description: ''
-      authenticated: false
+      authenticated: true
     headers:
+      Authorization: 'Bearer {API_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
     queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/orders/{id}'
+    metadata:
+      title: 'Display the specified resource.'
+      description: ''
+      authenticated: true
+    headers:
+      Authorization: 'Bearer {API_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the order.'
+        required: true
+        example: 15
+        type: integer
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/orders/{id}'
+    metadata:
+      title: 'Update the specified resource in storage.'
+      description: ''
+      authenticated: true
+    headers:
+      Authorization: 'Bearer {API_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the order.'
+        required: true
+        example: 6
+        type: integer
+    queryParameters: []
     bodyParameters:
-      name:
-        name: name
+      is_delivered:
+        name: is_delivered
         description: ''
         required: true
-        example: libero
-        type: string
-      email:
-        name: email
-        description: 'Must be a valid email address.'
+        example: false
+        type: boolean
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/orders/{id}'
+    metadata:
+      title: 'Remove the specified resource from storage.'
+      description: ''
+      authenticated: true
+    headers:
+      Authorization: 'Bearer {API_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the order.'
         required: true
-        example: juwan.hegmann@example.com
-        type: string
-      password:
-        name: password
-        description: ''
-        required: true
-        example: minus
-        type: string
-      password_confirmation:
-        name: password_confirmation
-        description: ''
-        required: true
-        example: ducimus
-        type: string
+        example: 2
+        type: integer
+    queryParameters: []
+    bodyParameters: []
     responses: []
     responseFields: []

@@ -6,6 +6,8 @@ use App\Models\Order;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use App\Policies\OrderPolicy;
+use App\Models\Product;
+use App\Policies\ProductPolicy;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -17,6 +19,7 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
         Order::class => OrderPolicy::class,
+        Product::class => ProductPolicy::class,
     ];
 
     /**

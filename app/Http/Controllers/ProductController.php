@@ -53,6 +53,8 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('create', Product::class);
+
         // Validate and create product 
         $validator = Validator::make($request->product, [
             'name' => 'required|string',
@@ -114,6 +116,7 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         //
+        $this->authorize('update', $product);
 
         $validated = $request->validate([
             'name' => 'nullable|string',
@@ -138,6 +141,8 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         //
+        $this->authorize('delete',$product);
+
         $product->delete();
         
         return response()->json(['message' => 'Product successfully deleted'], 200);

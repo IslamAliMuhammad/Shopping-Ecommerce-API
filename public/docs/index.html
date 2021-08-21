@@ -68,152 +68,47 @@ You can switch the language used with the tabs at the top right (or from the nav
 <pre><code class="language-yaml">http://localhost</code></pre>
 
         <h1>Authenticating requests</h1>
-<p>Authenticate requests to this API's endpoints by sending an <strong><code>Authorization</code></strong> header with the value <strong><code>"Bearer {API_TOKEN}"</code></strong>.</p>
+<p>To authenticate requests, include an <strong><code>Authorization</code></strong> header with the value <strong><code>"Bearer {API_TOKEN}"</code></strong>.</p>
 <p>All authenticated endpoints are marked with a <code>requires authentication</code> badge in the documentation below.</p>
 <p>You can retrieve your API token by using register or login endpoint which return API token <b>Generate API token</b>.</p>
 
-        <h1 id="cart-items">cart_items</h1>
+        <h1 id="users">users</h1>
 
     
 
-            <h2 id="cart-items-GETapi-cart_item">Display a listing of the resource.</h2>
+            <h2 id="users-POSTapi-login">POST api/login</h2>
 
 <p>
-<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 
 
-<span id="example-requests-GETapi-cart_item">
-<blockquote>Example request:</blockquote>
-
-
-<pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/cart_item" \
-    --header "Authorization: Bearer {API_TOKEN}" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre>
-
-<pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/cart_item"
-);
-
-const headers = {
-    "Authorization": "Bearer {API_TOKEN}",
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre>
-</span>
-
-<span id="example-responses-GETapi-cart_item">
-            <blockquote>
-            <p>Example response (401):</p>
-        </blockquote>
-                <details class="annotation">
-            <summary>
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-access-control-allow-origin: *
- </code></pre>
-        </details>         <pre>
-
-<code class="language-json">{
-    &quot;message&quot;: &quot;Unauthenticated.&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-cart_item" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-cart_item"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-cart_item"></code></pre>
-</span>
-<span id="execution-error-GETapi-cart_item" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-cart_item"></code></pre>
-</span>
-<form id="form-GETapi-cart_item" data-method="GET"
-      data-path="api/cart_item"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer {API_TOKEN}","Content-Type":"application\/json","Accept":"application\/json"}'
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-cart_item', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-cart_item"
-                    onclick="tryItOut('GETapi-cart_item');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-cart_item"
-                    onclick="cancelTryOut('GETapi-cart_item');" hidden>Cancel
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-cart_item" hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/cart_item</code></b>
-        </p>
-                <p>
-            <label id="auth-GETapi-cart_item" hidden>Authorization header:
-                <b><code>Bearer </code></b><input type="text"
-                                                                name="Authorization"
-                                                                data-prefix="Bearer "
-                                                                data-endpoint="GETapi-cart_item"
-                                                                data-component="header"></label>
-        </p>
-                </form>
-
-            <h2 id="cart-items-POSTapi-cart_item">Store a newly created resource in storage.</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-
-
-<span id="example-requests-POSTapi-cart_item">
+<span id="example-requests-POSTapi-login">
 <blockquote>Example request:</blockquote>
 
 
 <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/cart_item" \
-    --header "Authorization: Bearer {API_TOKEN}" \
+    "http://localhost/api/login" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"product_detail_id\": 95.59974,
-    \"quantity\": \"nisi\"
+    \"email\": \"equitzon@example.org\",
+    \"password\": \"delectus\"
 }"
 </code></pre>
 
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/cart_item"
+    "http://localhost/api/login"
 );
 
 const headers = {
-    "Authorization": "Bearer {API_TOKEN}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
 
 let body = {
-    "product_detail_id": 95.59974,
-    "quantity": "nisi"
+    "email": "equitzon@example.org",
+    "password": "delectus"
 }
 
 fetch(url, {
@@ -223,691 +118,189 @@ fetch(url, {
 }).then(response =&gt; response.json());</code></pre>
 </span>
 
-<span id="example-responses-POSTapi-cart_item">
+<span id="example-responses-POSTapi-login">
 </span>
-<span id="execution-results-POSTapi-cart_item" hidden>
+<span id="execution-results-POSTapi-login" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-POSTapi-cart_item"></span>:
+                id="execution-response-status-POSTapi-login"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-cart_item"></code></pre>
+    <pre class="json"><code id="execution-response-content-POSTapi-login"></code></pre>
 </span>
-<span id="execution-error-POSTapi-cart_item" hidden>
+<span id="execution-error-POSTapi-login" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-cart_item"></code></pre>
+    <pre><code id="execution-error-message-POSTapi-login"></code></pre>
 </span>
-<form id="form-POSTapi-cart_item" data-method="POST"
-      data-path="api/cart_item"
-      data-authed="1"
+<form id="form-POSTapi-login" data-method="POST"
+      data-path="api/login"
+      data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer {API_TOKEN}","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-cart_item', this);">
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-login', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-cart_item"
-                    onclick="tryItOut('POSTapi-cart_item');">Try it out ⚡
+                    id="btn-tryout-POSTapi-login"
+                    onclick="tryItOut('POSTapi-login');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-cart_item"
-                    onclick="cancelTryOut('POSTapi-cart_item');" hidden>Cancel
+                    id="btn-canceltryout-POSTapi-login"
+                    onclick="cancelTryOut('POSTapi-login');" hidden>Cancel
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-cart_item" hidden>Send Request 💥
+                    id="btn-executetryout-POSTapi-login" hidden>Send Request 💥
             </button>
             </h3>
             <p>
             <small class="badge badge-black">POST</small>
-            <b><code>api/cart_item</code></b>
+            <b><code>api/login</code></b>
         </p>
-                <p>
-            <label id="auth-POSTapi-cart_item" hidden>Authorization header:
-                <b><code>Bearer </code></b><input type="text"
-                                                                name="Authorization"
-                                                                data-prefix="Bearer "
-                                                                data-endpoint="POSTapi-cart_item"
-                                                                data-component="header"></label>
-        </p>
-                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <p>
-            <b><code>product_detail_id</code></b>&nbsp;&nbsp;<small>number</small>  &nbsp;
-                <input type="number"
-               name="product_detail_id"
-               data-endpoint="POSTapi-cart_item"
-               data-component="body" required  hidden>
-    <br>
-        </p>
-                <p>
-            <b><code>quantity</code></b>&nbsp;&nbsp;<small>numeric</small>  &nbsp;
-                <input type="text"
-               name="quantity"
-               data-endpoint="POSTapi-cart_item"
-               data-component="body" required  hidden>
-    <br>
-        </p>
-    
-    </form>
-
-            <h2 id="cart-items-DELETEapi-cart_item--id-">Remove the specified resource from storage.</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-
-
-<span id="example-requests-DELETEapi-cart_item--id-">
-<blockquote>Example request:</blockquote>
-
-
-<pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/cart_item/quis" \
-    --header "Authorization: Bearer {API_TOKEN}" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre>
-
-<pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/cart_item/quis"
-);
-
-const headers = {
-    "Authorization": "Bearer {API_TOKEN}",
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "DELETE",
-    headers,
-}).then(response =&gt; response.json());</code></pre>
-</span>
-
-<span id="example-responses-DELETEapi-cart_item--id-">
-</span>
-<span id="execution-results-DELETEapi-cart_item--id-" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-DELETEapi-cart_item--id-"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-DELETEapi-cart_item--id-"></code></pre>
-</span>
-<span id="execution-error-DELETEapi-cart_item--id-" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-DELETEapi-cart_item--id-"></code></pre>
-</span>
-<form id="form-DELETEapi-cart_item--id-" data-method="DELETE"
-      data-path="api/cart_item/{id}"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer {API_TOKEN}","Content-Type":"application\/json","Accept":"application\/json"}'
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-cart_item--id-', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-DELETEapi-cart_item--id-"
-                    onclick="tryItOut('DELETEapi-cart_item--id-');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-DELETEapi-cart_item--id-"
-                    onclick="cancelTryOut('DELETEapi-cart_item--id-');" hidden>Cancel
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-DELETEapi-cart_item--id-" hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-red">DELETE</small>
-            <b><code>api/cart_item/{id}</code></b>
-        </p>
-                <p>
-            <label id="auth-DELETEapi-cart_item--id-" hidden>Authorization header:
-                <b><code>Bearer </code></b><input type="text"
-                                                                name="Authorization"
-                                                                data-prefix="Bearer "
-                                                                data-endpoint="DELETEapi-cart_item--id-"
-                                                                data-component="header"></label>
-        </p>
-                <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <p>
-                <b><code>id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
-                <input type="text"
-               name="id"
-               data-endpoint="DELETEapi-cart_item--id-"
-               data-component="url" required  hidden>
-    <br>
-<p>The ID of the cart item.</p>            </p>
-                    </form>
-
-        <h1 id="orders">orders</h1>
-
-    
-
-            <h2 id="orders-GETapi-orders">Display a listing of the resource.</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-
-
-<span id="example-requests-GETapi-orders">
-<blockquote>Example request:</blockquote>
-
-
-<pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/orders" \
-    --header "Authorization: Bearer {API_TOKEN}" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre>
-
-<pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/orders"
-);
-
-const headers = {
-    "Authorization": "Bearer {API_TOKEN}",
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre>
-</span>
-
-<span id="example-responses-GETapi-orders">
-            <blockquote>
-            <p>Example response (401):</p>
-        </blockquote>
-                <details class="annotation">
-            <summary>
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-access-control-allow-origin: *
- </code></pre>
-        </details>         <pre>
-
-<code class="language-json">{
-    &quot;message&quot;: &quot;Unauthenticated.&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-orders" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-orders"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-orders"></code></pre>
-</span>
-<span id="execution-error-GETapi-orders" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-orders"></code></pre>
-</span>
-<form id="form-GETapi-orders" data-method="GET"
-      data-path="api/orders"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer {API_TOKEN}","Content-Type":"application\/json","Accept":"application\/json"}'
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-orders', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-orders"
-                    onclick="tryItOut('GETapi-orders');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-orders"
-                    onclick="cancelTryOut('GETapi-orders');" hidden>Cancel
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-orders" hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/orders</code></b>
-        </p>
-                <p>
-            <label id="auth-GETapi-orders" hidden>Authorization header:
-                <b><code>Bearer </code></b><input type="text"
-                                                                name="Authorization"
-                                                                data-prefix="Bearer "
-                                                                data-endpoint="GETapi-orders"
-                                                                data-component="header"></label>
-        </p>
-                </form>
-
-            <h2 id="orders-POSTapi-orders">Store a newly created resource in storage.</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-
-
-<span id="example-requests-POSTapi-orders">
-<blockquote>Example request:</blockquote>
-
-
-<pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/orders" \
-    --header "Authorization: Bearer {API_TOKEN}" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre>
-
-<pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/orders"
-);
-
-const headers = {
-    "Authorization": "Bearer {API_TOKEN}",
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "POST",
-    headers,
-}).then(response =&gt; response.json());</code></pre>
-</span>
-
-<span id="example-responses-POSTapi-orders">
-</span>
-<span id="execution-results-POSTapi-orders" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-POSTapi-orders"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-orders"></code></pre>
-</span>
-<span id="execution-error-POSTapi-orders" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-orders"></code></pre>
-</span>
-<form id="form-POSTapi-orders" data-method="POST"
-      data-path="api/orders"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer {API_TOKEN}","Content-Type":"application\/json","Accept":"application\/json"}'
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-orders', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-orders"
-                    onclick="tryItOut('POSTapi-orders');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-orders"
-                    onclick="cancelTryOut('POSTapi-orders');" hidden>Cancel
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-orders" hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-black">POST</small>
-            <b><code>api/orders</code></b>
-        </p>
-                <p>
-            <label id="auth-POSTapi-orders" hidden>Authorization header:
-                <b><code>Bearer </code></b><input type="text"
-                                                                name="Authorization"
-                                                                data-prefix="Bearer "
-                                                                data-endpoint="POSTapi-orders"
-                                                                data-component="header"></label>
-        </p>
-                </form>
-
-            <h2 id="orders-GETapi-orders--id-">Display the specified resource.</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-
-
-<span id="example-requests-GETapi-orders--id-">
-<blockquote>Example request:</blockquote>
-
-
-<pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/orders/14" \
-    --header "Authorization: Bearer {API_TOKEN}" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre>
-
-<pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/orders/14"
-);
-
-const headers = {
-    "Authorization": "Bearer {API_TOKEN}",
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre>
-</span>
-
-<span id="example-responses-GETapi-orders--id-">
-            <blockquote>
-            <p>Example response (401):</p>
-        </blockquote>
-                <details class="annotation">
-            <summary>
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-access-control-allow-origin: *
- </code></pre>
-        </details>         <pre>
-
-<code class="language-json">{
-    &quot;message&quot;: &quot;Unauthenticated.&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-orders--id-" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-orders--id-"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-orders--id-"></code></pre>
-</span>
-<span id="execution-error-GETapi-orders--id-" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-orders--id-"></code></pre>
-</span>
-<form id="form-GETapi-orders--id-" data-method="GET"
-      data-path="api/orders/{id}"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer {API_TOKEN}","Content-Type":"application\/json","Accept":"application\/json"}'
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-orders--id-', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-orders--id-"
-                    onclick="tryItOut('GETapi-orders--id-');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-orders--id-"
-                    onclick="cancelTryOut('GETapi-orders--id-');" hidden>Cancel
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-orders--id-" hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/orders/{id}</code></b>
-        </p>
-                <p>
-            <label id="auth-GETapi-orders--id-" hidden>Authorization header:
-                <b><code>Bearer </code></b><input type="text"
-                                                                name="Authorization"
-                                                                data-prefix="Bearer "
-                                                                data-endpoint="GETapi-orders--id-"
-                                                                data-component="header"></label>
-        </p>
-                <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <p>
-                <b><code>id</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
-                <input type="number"
-               name="id"
-               data-endpoint="GETapi-orders--id-"
-               data-component="url" required  hidden>
-    <br>
-<p>The ID of the order.</p>            </p>
-                    </form>
-
-            <h2 id="orders-PUTapi-orders--id-">Update the specified resource in storage.</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-
-
-<span id="example-requests-PUTapi-orders--id-">
-<blockquote>Example request:</blockquote>
-
-
-<pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/orders/5" \
-    --header "Authorization: Bearer {API_TOKEN}" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"is_delivered\": false
-}"
-</code></pre>
-
-<pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/orders/5"
-);
-
-const headers = {
-    "Authorization": "Bearer {API_TOKEN}",
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "is_delivered": false
-}
-
-fetch(url, {
-    method: "PUT",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre>
-</span>
-
-<span id="example-responses-PUTapi-orders--id-">
-</span>
-<span id="execution-results-PUTapi-orders--id-" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-PUTapi-orders--id-"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-PUTapi-orders--id-"></code></pre>
-</span>
-<span id="execution-error-PUTapi-orders--id-" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-PUTapi-orders--id-"></code></pre>
-</span>
-<form id="form-PUTapi-orders--id-" data-method="PUT"
-      data-path="api/orders/{id}"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer {API_TOKEN}","Content-Type":"application\/json","Accept":"application\/json"}'
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('PUTapi-orders--id-', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-PUTapi-orders--id-"
-                    onclick="tryItOut('PUTapi-orders--id-');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-PUTapi-orders--id-"
-                    onclick="cancelTryOut('PUTapi-orders--id-');" hidden>Cancel
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-PUTapi-orders--id-" hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-darkblue">PUT</small>
-            <b><code>api/orders/{id}</code></b>
-        </p>
-            <p>
-            <small class="badge badge-purple">PATCH</small>
-            <b><code>api/orders/{id}</code></b>
-        </p>
-                <p>
-            <label id="auth-PUTapi-orders--id-" hidden>Authorization header:
-                <b><code>Bearer </code></b><input type="text"
-                                                                name="Authorization"
-                                                                data-prefix="Bearer "
-                                                                data-endpoint="PUTapi-orders--id-"
-                                                                data-component="header"></label>
-        </p>
-                <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <p>
-                <b><code>id</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
-                <input type="number"
-               name="id"
-               data-endpoint="PUTapi-orders--id-"
-               data-component="url" required  hidden>
-    <br>
-<p>The ID of the order.</p>            </p>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <p>
-            <b><code>is_delivered</code></b>&nbsp;&nbsp;<small>boolean</small>  &nbsp;
-                <label data-endpoint="PUTapi-orders--id-" hidden>
-            <input type="radio" name="is_delivered"
-                   value="true"
-                   data-endpoint="PUTapi-orders--id-"
-                   data-component="body" required             >
-            <code>true</code>
-        </label>
-        <label data-endpoint="PUTapi-orders--id-" hidden>
-            <input type="radio" name="is_delivered"
-                   value="false"
-                   data-endpoint="PUTapi-orders--id-"
-                   data-component="body" required             >
-            <code>false</code>
-        </label>
+            <b><code>email</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="email"
+               data-endpoint="POSTapi-login"
+               data-component="body" required  hidden>
+    <br>
+<p>Must be a valid email address.</p>        </p>
+                <p>
+            <b><code>password</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="password"
+               data-endpoint="POSTapi-login"
+               data-component="body" required  hidden>
     <br>
         </p>
     
     </form>
 
-            <h2 id="orders-DELETEapi-orders--id-">Remove the specified resource from storage.</h2>
+            <h2 id="users-POSTapi-register">POST api/register</h2>
 
 <p>
-<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 
 
-<span id="example-requests-DELETEapi-orders--id-">
+<span id="example-requests-POSTapi-register">
 <blockquote>Example request:</blockquote>
 
 
-<pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/orders/14" \
-    --header "Authorization: Bearer {API_TOKEN}" \
+<pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/register" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre>
+    --header "Accept: application/json" \
+    --data "{
+    \"name\": \"officiis\",
+    \"email\": \"haley.fae@example.org\",
+    \"password\": \"culpa\",
+    \"password_confirmation\": \"maxime\"
+}"
+</code></pre>
 
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/orders/14"
+    "http://localhost/api/register"
 );
 
 const headers = {
-    "Authorization": "Bearer {API_TOKEN}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
 
+let body = {
+    "name": "officiis",
+    "email": "haley.fae@example.org",
+    "password": "culpa",
+    "password_confirmation": "maxime"
+}
+
 fetch(url, {
-    method: "DELETE",
+    method: "POST",
     headers,
+    body: JSON.stringify(body),
 }).then(response =&gt; response.json());</code></pre>
 </span>
 
-<span id="example-responses-DELETEapi-orders--id-">
+<span id="example-responses-POSTapi-register">
 </span>
-<span id="execution-results-DELETEapi-orders--id-" hidden>
+<span id="execution-results-POSTapi-register" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-DELETEapi-orders--id-"></span>:
+                id="execution-response-status-POSTapi-register"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-DELETEapi-orders--id-"></code></pre>
+    <pre class="json"><code id="execution-response-content-POSTapi-register"></code></pre>
 </span>
-<span id="execution-error-DELETEapi-orders--id-" hidden>
+<span id="execution-error-POSTapi-register" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-DELETEapi-orders--id-"></code></pre>
+    <pre><code id="execution-error-message-POSTapi-register"></code></pre>
 </span>
-<form id="form-DELETEapi-orders--id-" data-method="DELETE"
-      data-path="api/orders/{id}"
-      data-authed="1"
+<form id="form-POSTapi-register" data-method="POST"
+      data-path="api/register"
+      data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer {API_TOKEN}","Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-orders--id-', this);">
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-register', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-DELETEapi-orders--id-"
-                    onclick="tryItOut('DELETEapi-orders--id-');">Try it out ⚡
+                    id="btn-tryout-POSTapi-register"
+                    onclick="tryItOut('POSTapi-register');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-DELETEapi-orders--id-"
-                    onclick="cancelTryOut('DELETEapi-orders--id-');" hidden>Cancel
+                    id="btn-canceltryout-POSTapi-register"
+                    onclick="cancelTryOut('POSTapi-register');" hidden>Cancel
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-DELETEapi-orders--id-" hidden>Send Request 💥
+                    id="btn-executetryout-POSTapi-register" hidden>Send Request 💥
             </button>
             </h3>
             <p>
-            <small class="badge badge-red">DELETE</small>
-            <b><code>api/orders/{id}</code></b>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/register</code></b>
+        </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>name</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="name"
+               data-endpoint="POSTapi-register"
+               data-component="body" required  hidden>
+    <br>
         </p>
                 <p>
-            <label id="auth-DELETEapi-orders--id-" hidden>Authorization header:
-                <b><code>Bearer </code></b><input type="text"
-                                                                name="Authorization"
-                                                                data-prefix="Bearer "
-                                                                data-endpoint="DELETEapi-orders--id-"
-                                                                data-component="header"></label>
-        </p>
-                <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <p>
-                <b><code>id</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
-                <input type="number"
-               name="id"
-               data-endpoint="DELETEapi-orders--id-"
-               data-component="url" required  hidden>
+            <b><code>email</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="email"
+               data-endpoint="POSTapi-register"
+               data-component="body" required  hidden>
     <br>
-<p>The ID of the order.</p>            </p>
-                    </form>
+<p>Must be a valid email address.</p>        </p>
+                <p>
+            <b><code>password</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="password"
+               data-endpoint="POSTapi-register"
+               data-component="body" required  hidden>
+    <br>
+        </p>
+                <p>
+            <b><code>password_confirmation</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="password_confirmation"
+               data-endpoint="POSTapi-register"
+               data-component="body" required  hidden>
+    <br>
+        </p>
+    
+    </form>
 
         <h1 id="products">products</h1>
 
@@ -932,23 +325,23 @@ fetch(url, {
     --header "Accept: application/json" \
     --data "{
     \"product\": {
-        \"name\": \"quos\",
-        \"category_id\": \"ea\",
-        \"gender_id\": \"omnis\",
-        \"description\": \"sunt\",
-        \"price\": \"rem\",
-        \"photo_path\": \"inventore\"
+        \"name\": \"aut\",
+        \"category_id\": \"voluptatem\",
+        \"gender_id\": \"molestiae\",
+        \"description\": \"explicabo\",
+        \"price\": \"fuga\",
+        \"photo_path\": \"fuga\"
     },
     \"product_details\": [
         {
-            \"size\": \"nesciunt\",
-            \"color\": \"aperiam\",
-            \"units\": \"harum\"
+            \"size\": \"quaerat\",
+            \"color\": \"nisi\",
+            \"units\": \"dolores\"
         },
         {
-            \"size\": \"nesciunt\",
-            \"color\": \"aperiam\",
-            \"units\": \"harum\"
+            \"size\": \"quaerat\",
+            \"color\": \"nisi\",
+            \"units\": \"dolores\"
         }
     ]
 }"
@@ -966,23 +359,23 @@ const headers = {
 
 let body = {
     "product": {
-        "name": "quos",
-        "category_id": "ea",
-        "gender_id": "omnis",
-        "description": "sunt",
-        "price": "rem",
-        "photo_path": "inventore"
+        "name": "aut",
+        "category_id": "voluptatem",
+        "gender_id": "molestiae",
+        "description": "explicabo",
+        "price": "fuga",
+        "photo_path": "fuga"
     },
     "product_details": [
         {
-            "size": "nesciunt",
-            "color": "aperiam",
-            "units": "harum"
+            "size": "quaerat",
+            "color": "nisi",
+            "units": "dolores"
         },
         {
-            "size": "nesciunt",
-            "color": "aperiam",
-            "units": "harum"
+            "size": "quaerat",
+            "color": "nisi",
+            "units": "dolores"
         }
     ]
 }
@@ -1148,22 +541,22 @@ fetch(url, {
 
 
 <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/products/3" \
+    "http://localhost/api/products/7" \
     --header "Authorization: Bearer {API_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"laborum\",
-    \"category_id\": 3.5747,
-    \"gender_id\": 44598.79488,
-    \"description\": \"quidem\",
-    \"price\": 3852618.4307818,
-    \"photo_path\": \"molestiae\"
+    \"name\": \"iste\",
+    \"category_id\": 4.795444,
+    \"gender_id\": 459,
+    \"description\": \"doloremque\",
+    \"price\": 1274238.2580099,
+    \"photo_path\": \"aperiam\"
 }"
 </code></pre>
 
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/products/3"
+    "http://localhost/api/products/7"
 );
 
 const headers = {
@@ -1173,12 +566,12 @@ const headers = {
 };
 
 let body = {
-    "name": "laborum",
-    "category_id": 3.5747,
-    "gender_id": 44598.79488,
-    "description": "quidem",
-    "price": 3852618.4307818,
-    "photo_path": "molestiae"
+    "name": "iste",
+    "category_id": 4.795444,
+    "gender_id": 459,
+    "description": "doloremque",
+    "price": 1274238.2580099,
+    "photo_path": "aperiam"
 }
 
 fetch(url, {
@@ -1315,13 +708,13 @@ fetch(url, {
 
 
 <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/products/3" \
+    "http://localhost/api/products/2" \
     --header "Authorization: Bearer {API_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
 
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/products/3"
+    "http://localhost/api/products/2"
 );
 
 const headers = {
@@ -1642,7 +1035,7 @@ access-control-allow-origin: *
     &quot;per_page&quot;: 12,
     &quot;prev_page_url&quot;: null,
     &quot;to&quot;: 12,
-    &quot;total&quot;: 63
+    &quot;total&quot;: 71
 }</code>
  </pre>
     </span>
@@ -1699,12 +1092,12 @@ access-control-allow-origin: *
 
 
 <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/products/9" \
+    --get "http://localhost/api/products/4" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
 
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/products/9"
+    "http://localhost/api/products/4"
 );
 
 const headers = {
@@ -1798,43 +1191,148 @@ access-control-allow-origin: *
 <p>The ID of the product.</p>            </p>
                     </form>
 
-        <h1 id="users">users</h1>
+        <h1 id="cart-items">cart_items</h1>
 
     
 
-            <h2 id="users-POSTapi-login">POST api/login</h2>
+            <h2 id="cart-items-GETapi-cart_item">Display a listing of the resource.</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 
 
-<span id="example-requests-POSTapi-login">
+<span id="example-requests-GETapi-cart_item">
+<blockquote>Example request:</blockquote>
+
+
+<pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/cart_item" \
+    --header "Authorization: Bearer {API_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre>
+
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/cart_item"
+);
+
+const headers = {
+    "Authorization": "Bearer {API_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+</span>
+
+<span id="example-responses-GETapi-cart_item">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre>
+        </details>         <pre>
+
+<code class="language-json">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-cart_item" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-cart_item"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-cart_item"></code></pre>
+</span>
+<span id="execution-error-GETapi-cart_item" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-cart_item"></code></pre>
+</span>
+<form id="form-GETapi-cart_item" data-method="GET"
+      data-path="api/cart_item"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Authorization":"Bearer {API_TOKEN}","Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-cart_item', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-cart_item"
+                    onclick="tryItOut('GETapi-cart_item');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-cart_item"
+                    onclick="cancelTryOut('GETapi-cart_item');" hidden>Cancel
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-cart_item" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/cart_item</code></b>
+        </p>
+                <p>
+            <label id="auth-GETapi-cart_item" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="GETapi-cart_item"
+                                                                data-component="header"></label>
+        </p>
+                </form>
+
+            <h2 id="cart-items-POSTapi-cart_item">Store a newly created resource in storage.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-cart_item">
 <blockquote>Example request:</blockquote>
 
 
 <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/login" \
+    "http://localhost/api/cart_item" \
+    --header "Authorization: Bearer {API_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"hollie62@example.net\",
-    \"password\": \"iste\"
+    \"product_detail_id\": 1,
+    \"quantity\": \"quod\"
 }"
 </code></pre>
 
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/login"
+    "http://localhost/api/cart_item"
 );
 
 const headers = {
+    "Authorization": "Bearer {API_TOKEN}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
 
 let body = {
-    "email": "hollie62@example.net",
-    "password": "iste"
+    "product_detail_id": 1,
+    "quantity": "quod"
 }
 
 fetch(url, {
@@ -1844,189 +1342,691 @@ fetch(url, {
 }).then(response =&gt; response.json());</code></pre>
 </span>
 
-<span id="example-responses-POSTapi-login">
+<span id="example-responses-POSTapi-cart_item">
 </span>
-<span id="execution-results-POSTapi-login" hidden>
+<span id="execution-results-POSTapi-cart_item" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-POSTapi-login"></span>:
+                id="execution-response-status-POSTapi-cart_item"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-login"></code></pre>
+    <pre class="json"><code id="execution-response-content-POSTapi-cart_item"></code></pre>
 </span>
-<span id="execution-error-POSTapi-login" hidden>
+<span id="execution-error-POSTapi-cart_item" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-login"></code></pre>
+    <pre><code id="execution-error-message-POSTapi-cart_item"></code></pre>
 </span>
-<form id="form-POSTapi-login" data-method="POST"
-      data-path="api/login"
-      data-authed="0"
+<form id="form-POSTapi-cart_item" data-method="POST"
+      data-path="api/cart_item"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer {API_TOKEN}","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-login', this);">
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-cart_item', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-login"
-                    onclick="tryItOut('POSTapi-login');">Try it out ⚡
+                    id="btn-tryout-POSTapi-cart_item"
+                    onclick="tryItOut('POSTapi-cart_item');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-login"
-                    onclick="cancelTryOut('POSTapi-login');" hidden>Cancel
+                    id="btn-canceltryout-POSTapi-cart_item"
+                    onclick="cancelTryOut('POSTapi-cart_item');" hidden>Cancel
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-login" hidden>Send Request 💥
+                    id="btn-executetryout-POSTapi-cart_item" hidden>Send Request 💥
             </button>
             </h3>
             <p>
             <small class="badge badge-black">POST</small>
-            <b><code>api/login</code></b>
+            <b><code>api/cart_item</code></b>
         </p>
-                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+                <p>
+            <label id="auth-POSTapi-cart_item" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="POSTapi-cart_item"
+                                                                data-component="header"></label>
+        </p>
+                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <p>
-            <b><code>email</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
-                <input type="text"
-               name="email"
-               data-endpoint="POSTapi-login"
+            <b><code>product_detail_id</code></b>&nbsp;&nbsp;<small>number</small>  &nbsp;
+                <input type="number"
+               name="product_detail_id"
+               data-endpoint="POSTapi-cart_item"
                data-component="body" required  hidden>
     <br>
-<p>Must be a valid email address.</p>        </p>
+        </p>
                 <p>
-            <b><code>password</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+            <b><code>quantity</code></b>&nbsp;&nbsp;<small>numeric</small>  &nbsp;
                 <input type="text"
-               name="password"
-               data-endpoint="POSTapi-login"
+               name="quantity"
+               data-endpoint="POSTapi-cart_item"
                data-component="body" required  hidden>
     <br>
         </p>
     
     </form>
 
-            <h2 id="users-POSTapi-register">POST api/register</h2>
+            <h2 id="cart-items-DELETEapi-cart_item--id-">Remove the specified resource from storage.</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 
 
-<span id="example-requests-POSTapi-register">
+<span id="example-requests-DELETEapi-cart_item--id-">
+<blockquote>Example request:</blockquote>
+
+
+<pre><code class="language-bash">curl --request DELETE \
+    "http://localhost/api/cart_item/nostrum" \
+    --header "Authorization: Bearer {API_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre>
+
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/cart_item/nostrum"
+);
+
+const headers = {
+    "Authorization": "Bearer {API_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+</span>
+
+<span id="example-responses-DELETEapi-cart_item--id-">
+</span>
+<span id="execution-results-DELETEapi-cart_item--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEapi-cart_item--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-cart_item--id-"></code></pre>
+</span>
+<span id="execution-error-DELETEapi-cart_item--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-cart_item--id-"></code></pre>
+</span>
+<form id="form-DELETEapi-cart_item--id-" data-method="DELETE"
+      data-path="api/cart_item/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Authorization":"Bearer {API_TOKEN}","Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-cart_item--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEapi-cart_item--id-"
+                    onclick="tryItOut('DELETEapi-cart_item--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEapi-cart_item--id-"
+                    onclick="cancelTryOut('DELETEapi-cart_item--id-');" hidden>Cancel
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEapi-cart_item--id-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/cart_item/{id}</code></b>
+        </p>
+                <p>
+            <label id="auth-DELETEapi-cart_item--id-" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="DELETEapi-cart_item--id-"
+                                                                data-component="header"></label>
+        </p>
+                <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="id"
+               data-endpoint="DELETEapi-cart_item--id-"
+               data-component="url" required  hidden>
+    <br>
+<p>The ID of the cart item.</p>            </p>
+                    </form>
+
+        <h1 id="orders">orders</h1>
+
+    
+
+            <h2 id="orders-GETapi-orders">Display a listing of the resource.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-GETapi-orders">
+<blockquote>Example request:</blockquote>
+
+
+<pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/orders" \
+    --header "Authorization: Bearer {API_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre>
+
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/orders"
+);
+
+const headers = {
+    "Authorization": "Bearer {API_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+</span>
+
+<span id="example-responses-GETapi-orders">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre>
+        </details>         <pre>
+
+<code class="language-json">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-orders" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-orders"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-orders"></code></pre>
+</span>
+<span id="execution-error-GETapi-orders" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-orders"></code></pre>
+</span>
+<form id="form-GETapi-orders" data-method="GET"
+      data-path="api/orders"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Authorization":"Bearer {API_TOKEN}","Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-orders', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-orders"
+                    onclick="tryItOut('GETapi-orders');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-orders"
+                    onclick="cancelTryOut('GETapi-orders');" hidden>Cancel
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-orders" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/orders</code></b>
+        </p>
+                <p>
+            <label id="auth-GETapi-orders" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="GETapi-orders"
+                                                                data-component="header"></label>
+        </p>
+                </form>
+
+            <h2 id="orders-POSTapi-orders">Store a newly created resource in storage.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-orders">
 <blockquote>Example request:</blockquote>
 
 
 <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/register" \
+    "http://localhost/api/orders" \
+    --header "Authorization: Bearer {API_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre>
+
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/orders"
+);
+
+const headers = {
+    "Authorization": "Bearer {API_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+</span>
+
+<span id="example-responses-POSTapi-orders">
+</span>
+<span id="execution-results-POSTapi-orders" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-orders"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-orders"></code></pre>
+</span>
+<span id="execution-error-POSTapi-orders" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-orders"></code></pre>
+</span>
+<form id="form-POSTapi-orders" data-method="POST"
+      data-path="api/orders"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Authorization":"Bearer {API_TOKEN}","Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-orders', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-orders"
+                    onclick="tryItOut('POSTapi-orders');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-orders"
+                    onclick="cancelTryOut('POSTapi-orders');" hidden>Cancel
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-orders" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/orders</code></b>
+        </p>
+                <p>
+            <label id="auth-POSTapi-orders" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="POSTapi-orders"
+                                                                data-component="header"></label>
+        </p>
+                </form>
+
+            <h2 id="orders-GETapi-orders--id-">Display the specified resource.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-GETapi-orders--id-">
+<blockquote>Example request:</blockquote>
+
+
+<pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/orders/15" \
+    --header "Authorization: Bearer {API_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre>
+
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/orders/15"
+);
+
+const headers = {
+    "Authorization": "Bearer {API_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+</span>
+
+<span id="example-responses-GETapi-orders--id-">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre>
+        </details>         <pre>
+
+<code class="language-json">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-orders--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-orders--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-orders--id-"></code></pre>
+</span>
+<span id="execution-error-GETapi-orders--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-orders--id-"></code></pre>
+</span>
+<form id="form-GETapi-orders--id-" data-method="GET"
+      data-path="api/orders/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Authorization":"Bearer {API_TOKEN}","Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-orders--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-orders--id-"
+                    onclick="tryItOut('GETapi-orders--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-orders--id-"
+                    onclick="cancelTryOut('GETapi-orders--id-');" hidden>Cancel
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-orders--id-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/orders/{id}</code></b>
+        </p>
+                <p>
+            <label id="auth-GETapi-orders--id-" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="GETapi-orders--id-"
+                                                                data-component="header"></label>
+        </p>
+                <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>id</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+                <input type="number"
+               name="id"
+               data-endpoint="GETapi-orders--id-"
+               data-component="url" required  hidden>
+    <br>
+<p>The ID of the order.</p>            </p>
+                    </form>
+
+            <h2 id="orders-PUTapi-orders--id-">Update the specified resource in storage.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-PUTapi-orders--id-">
+<blockquote>Example request:</blockquote>
+
+
+<pre><code class="language-bash">curl --request PUT \
+    "http://localhost/api/orders/6" \
+    --header "Authorization: Bearer {API_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"libero\",
-    \"email\": \"juwan.hegmann@example.com\",
-    \"password\": \"minus\",
-    \"password_confirmation\": \"ducimus\"
+    \"is_delivered\": false
 }"
 </code></pre>
 
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/register"
+    "http://localhost/api/orders/6"
 );
 
 const headers = {
+    "Authorization": "Bearer {API_TOKEN}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
 
 let body = {
-    "name": "libero",
-    "email": "juwan.hegmann@example.com",
-    "password": "minus",
-    "password_confirmation": "ducimus"
+    "is_delivered": false
 }
 
 fetch(url, {
-    method: "POST",
+    method: "PUT",
     headers,
     body: JSON.stringify(body),
 }).then(response =&gt; response.json());</code></pre>
 </span>
 
-<span id="example-responses-POSTapi-register">
+<span id="example-responses-PUTapi-orders--id-">
 </span>
-<span id="execution-results-POSTapi-register" hidden>
+<span id="execution-results-PUTapi-orders--id-" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-POSTapi-register"></span>:
+                id="execution-response-status-PUTapi-orders--id-"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-register"></code></pre>
+    <pre class="json"><code id="execution-response-content-PUTapi-orders--id-"></code></pre>
 </span>
-<span id="execution-error-POSTapi-register" hidden>
+<span id="execution-error-PUTapi-orders--id-" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-register"></code></pre>
+    <pre><code id="execution-error-message-PUTapi-orders--id-"></code></pre>
 </span>
-<form id="form-POSTapi-register" data-method="POST"
-      data-path="api/register"
-      data-authed="0"
+<form id="form-PUTapi-orders--id-" data-method="PUT"
+      data-path="api/orders/{id}"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      data-headers='{"Authorization":"Bearer {API_TOKEN}","Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-register', this);">
+      onsubmit="event.preventDefault(); executeTryOut('PUTapi-orders--id-', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-register"
-                    onclick="tryItOut('POSTapi-register');">Try it out ⚡
+                    id="btn-tryout-PUTapi-orders--id-"
+                    onclick="tryItOut('PUTapi-orders--id-');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-register"
-                    onclick="cancelTryOut('POSTapi-register');" hidden>Cancel
+                    id="btn-canceltryout-PUTapi-orders--id-"
+                    onclick="cancelTryOut('PUTapi-orders--id-');" hidden>Cancel
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-register" hidden>Send Request 💥
+                    id="btn-executetryout-PUTapi-orders--id-" hidden>Send Request 💥
             </button>
             </h3>
             <p>
-            <small class="badge badge-black">POST</small>
-            <b><code>api/register</code></b>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/orders/{id}</code></b>
         </p>
+            <p>
+            <small class="badge badge-purple">PATCH</small>
+            <b><code>api/orders/{id}</code></b>
+        </p>
+                <p>
+            <label id="auth-PUTapi-orders--id-" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="PUTapi-orders--id-"
+                                                                data-component="header"></label>
+        </p>
+                <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>id</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+                <input type="number"
+               name="id"
+               data-endpoint="PUTapi-orders--id-"
+               data-component="url" required  hidden>
+    <br>
+<p>The ID of the order.</p>            </p>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <p>
-            <b><code>name</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
-                <input type="text"
-               name="name"
-               data-endpoint="POSTapi-register"
-               data-component="body" required  hidden>
-    <br>
-        </p>
-                <p>
-            <b><code>email</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
-                <input type="text"
-               name="email"
-               data-endpoint="POSTapi-register"
-               data-component="body" required  hidden>
-    <br>
-<p>Must be a valid email address.</p>        </p>
-                <p>
-            <b><code>password</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
-                <input type="text"
-               name="password"
-               data-endpoint="POSTapi-register"
-               data-component="body" required  hidden>
-    <br>
-        </p>
-                <p>
-            <b><code>password_confirmation</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
-                <input type="text"
-               name="password_confirmation"
-               data-endpoint="POSTapi-register"
-               data-component="body" required  hidden>
+            <b><code>is_delivered</code></b>&nbsp;&nbsp;<small>boolean</small>  &nbsp;
+                <label data-endpoint="PUTapi-orders--id-" hidden>
+            <input type="radio" name="is_delivered"
+                   value="true"
+                   data-endpoint="PUTapi-orders--id-"
+                   data-component="body" required             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="PUTapi-orders--id-" hidden>
+            <input type="radio" name="is_delivered"
+                   value="false"
+                   data-endpoint="PUTapi-orders--id-"
+                   data-component="body" required             >
+            <code>false</code>
+        </label>
     <br>
         </p>
     
     </form>
+
+            <h2 id="orders-DELETEapi-orders--id-">Remove the specified resource from storage.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-DELETEapi-orders--id-">
+<blockquote>Example request:</blockquote>
+
+
+<pre><code class="language-bash">curl --request DELETE \
+    "http://localhost/api/orders/2" \
+    --header "Authorization: Bearer {API_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre>
+
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/orders/2"
+);
+
+const headers = {
+    "Authorization": "Bearer {API_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+</span>
+
+<span id="example-responses-DELETEapi-orders--id-">
+</span>
+<span id="execution-results-DELETEapi-orders--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEapi-orders--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-orders--id-"></code></pre>
+</span>
+<span id="execution-error-DELETEapi-orders--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-orders--id-"></code></pre>
+</span>
+<form id="form-DELETEapi-orders--id-" data-method="DELETE"
+      data-path="api/orders/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Authorization":"Bearer {API_TOKEN}","Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-orders--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEapi-orders--id-"
+                    onclick="tryItOut('DELETEapi-orders--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEapi-orders--id-"
+                    onclick="cancelTryOut('DELETEapi-orders--id-');" hidden>Cancel
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEapi-orders--id-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/orders/{id}</code></b>
+        </p>
+                <p>
+            <label id="auth-DELETEapi-orders--id-" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="DELETEapi-orders--id-"
+                                                                data-component="header"></label>
+        </p>
+                <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>id</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+                <input type="number"
+               name="id"
+               data-endpoint="DELETEapi-orders--id-"
+               data-component="url" required  hidden>
+    <br>
+<p>The ID of the order.</p>            </p>
+                    </form>
 
     
 
