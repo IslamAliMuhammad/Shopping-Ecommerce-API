@@ -6,6 +6,9 @@ use App\Models\Order;
 use App\Models\ProductDetail;
 use Illuminate\Http\Request;
 
+/**
+ * @group orders
+ */
 class OrderController extends Controller
 {
 

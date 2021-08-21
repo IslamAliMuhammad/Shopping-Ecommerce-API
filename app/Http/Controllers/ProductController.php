@@ -7,12 +7,18 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\ProductDetail;
 
+/**
+ * @group products
+ * 
+ */
 class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     * 
+     * @unauthenticated
      */
     public function index()
     {
@@ -27,6 +33,23 @@ class ProductController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     * 
+     * @bodyParam product object
+     * 
+     * @bodyParam product.name string required 
+     * @bodyParam product.category_id numeric required
+     * @bodyParam product.gender_id numeric required
+     * @bodyParam product.description string required
+     * @bodyParam product.price numeric required
+     * @bodyParam product.photo_path string required
+     * 
+     * 
+     * 
+     * @bodyParam product_details object[]
+     * 
+     * @bodyParam product_details[].size string required 
+     * @bodyParam product_details[].color string required 
+     * @bodyParam product_details[].units numeric required 
      */
     public function store(Request $request)
     {
@@ -69,6 +92,8 @@ class ProductController extends Controller
      *
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
+     * 
+     * @unauthenticated
      */
     
     public function show(Product $product) 

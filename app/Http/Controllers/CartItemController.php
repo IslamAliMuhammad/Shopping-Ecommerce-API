@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\ProductDetail;
 
-
+/**
+ * @group cart_items
+ */
 class CartItemController extends Controller
 {
     /**
@@ -24,6 +26,8 @@ class CartItemController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     * 
+     * @bodyParam quantity numeric required
      */
     public function store(Request $request)
     {
@@ -38,29 +42,8 @@ class CartItemController extends Controller
 
         auth()->user()->productDetails()->attach($request->product_detail_id, ['quantity' => $request->quantity]);
 
-    }
+        return response()->json(['message' => 'Product added to your cart successfully']);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
     }
 
     /**

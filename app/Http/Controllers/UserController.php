@@ -7,6 +7,11 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * @group users
+ * 
+ * @unauthenticated
+ */
 class UserController extends Controller
 {
     //
@@ -36,6 +41,11 @@ class UserController extends Controller
       }   
 
     public function login(Request $request) {
+        $validated = $request->validate([
+            'email'=> 'required|email',
+            'password' => 'required|string'
+        ]);
+
         $credentials = $request->only('email', 'password'); 
 
         if(Auth::attempt($credentials)){
