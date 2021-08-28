@@ -4,6 +4,9 @@ E-commerce API work as a link between company to sell their products and custome
 ## Description
 E-commerce API that allows a company to sell their products within four categories clothing, footwear, watches, and bags on the other hand allows a customer to place orders for company products.  
 
+## API Documentation
+Documentation is available at [link](http://137.184.42.173/docs/)
+
 ## Getting started
 
 ### Prerequisites
@@ -47,10 +50,7 @@ E-commerce API that allows a company to sell their products within four categori
     sail php artisan db:seed --class TestSeeder
     ```
 
-## API Documentation
-Documentation is available at [link]()
-
-## Postman collection
+#### Postman collection
 Postman collection is available at the root folder under the name [e-commerce.postman_collection.json](e-commerce.postman_collection.json)
 
 ## License
