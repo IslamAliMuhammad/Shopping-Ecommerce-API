@@ -6,6 +6,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CartItemController;
+use App\Http\Controllers\ProductDetailsController;
+
 
 
 /*
