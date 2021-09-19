@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "E-commerce API",
-        "_postman_id": "7eb27fee-ae85-413d-ba04-267117e410a9",
+        "_postman_id": "06eedfc3-9a06-42e6-b9c9-7753a772269f",
         "description": "E-commerce API to sell and buy products clothing, footwear, watches, and bags.",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -42,7 +42,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"equitzon@example.org\",\"password\":\"delectus\"}"
+                            "raw": "{\"email\":\"roy22@example.net\",\"password\":\"exercitationem\"}"
                         },
                         "description": "",
                         "auth": {
@@ -74,7 +74,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"officiis\",\"email\":\"haley.fae@example.org\",\"password\":\"culpa\",\"password_confirmation\":\"maxime\"}"
+                            "raw": "{\"name\":\"voluptatum\",\"email\":\"dahlia.brekke@example.net\",\"password\":\"enim\",\"password_confirmation\":\"consectetur\"}"
                         },
                         "description": "",
                         "auth": {
@@ -112,7 +112,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"product\":{\"name\":\"aut\",\"category_id\":\"voluptatem\",\"gender_id\":\"molestiae\",\"description\":\"explicabo\",\"price\":\"fuga\",\"photo_path\":\"fuga\"},\"product_details\":[{\"size\":\"quaerat\",\"color\":\"nisi\",\"units\":\"dolores\"},{\"size\":\"quaerat\",\"color\":\"nisi\",\"units\":\"dolores\"}]}"
+                            "raw": "{\"product\":{\"name\":\"iusto\",\"category_id\":\"maxime\",\"gender_id\":\"odit\",\"description\":\"inventore\",\"price\":\"unde\",\"photo_path\":\"dignissimos\"},\"product_details\":[{\"size\":\"voluptatem\",\"color\":\"sapiente\",\"units\":\"consequuntur\"},{\"size\":\"voluptatem\",\"color\":\"sapiente\",\"units\":\"consequuntur\"}]}"
                         },
                         "description": ""
                     },
@@ -131,7 +131,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "7",
+                                    "value": "4",
                                     "description": "The ID of the product."
                                 }
                             ]
@@ -149,7 +149,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"iste\",\"category_id\":4.795444,\"gender_id\":459,\"description\":\"doloremque\",\"price\":1274238.2580099,\"photo_path\":\"aperiam\"}"
+                            "raw": "{\"name\":\"natus\",\"category_id\":155995057.69,\"gender_id\":6.6345,\"description\":\"libero\",\"price\":629379244.2185,\"photo_path\":\"consectetur\"}"
                         },
                         "description": ""
                     },
@@ -168,7 +168,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "2",
+                                    "value": "9",
                                     "description": "The ID of the product."
                                 }
                             ]
@@ -241,7 +241,7 @@
                                 }
                             ],
                             "code": 200,
-                            "body": "{\"current_page\":1,\"data\":[{\"id\":1,\"category_id\":2,\"gender_id\":1,\"name\":\"Just then she noticed that they had to stoop to.\",\"description\":\"Caterpillar sternly. 'Explain yourself!' 'I can't remember half of them--and it belongs to a.\",\"price\":\"34582.02\",\"photo_path\":\"https:\\\/\\\/via.placeholder.com\\\/640x480.png\\\/001188?text=product+sapiente\",\"created_at\":\"2021-07-02T02:24:22.000000Z\",\"updated_at\":\"2021-07-02T02:24:22.000000Z\",\"deleted_at\":null},{\"id\":2,\"category_id\":2,\"gender_id\":3,\"name\":\"I don't take this young lady to see what the.\",\"description\":\"Alice could think of what sort it was) scratching and scrambling about in the long hall, and close.\",\"price\":\"31585.28\",\"photo_path\":\"https:\\\/\\\/via.placeholder.com\\\/640x480.png\\\/006611?text=product+fuga\",\"created_at\":\"2021-07-02T02:24:22.000000Z\",\"updated_at\":\"2021-07-02T02:24:22.000000Z\",\"deleted_at\":null},{\"id\":3,\"category_id\":3,\"gender_id\":2,\"name\":\"The Fish-Footman began by producing from under.\",\"description\":\"Alice: 'besides, that's not a moment to be a grin, and she set to work, and very soon had to sing.\",\"price\":\"90845.96\",\"photo_path\":\"https:\\\/\\\/via.placeholder.com\\\/640x480.png\\\/0022ff?text=product+quia\",\"created_at\":\"2021-07-02T02:24:22.000000Z\",\"updated_at\":\"2021-07-02T02:24:22.000000Z\",\"deleted_at\":null},{\"id\":4,\"category_id\":1,\"gender_id\":2,\"name\":\"Cat, 'a dog's not mad. You grant that?' 'I.\",\"description\":\"There was a table, with a round face, and was going to begin with; and being so many different.\",\"price\":\"74243.71\",\"photo_path\":\"https:\\\/\\\/via.placeholder.com\\\/640x480.png\\\/008877?text=product+quia\",\"created_at\":\"2021-07-02T02:24:23.000000Z\",\"updated_at\":\"2021-07-02T02:24:23.000000Z\",\"deleted_at\":null},{\"id\":5,\"category_id\":1,\"gender_id\":2,\"name\":\"The Pool of Tears 'Curiouser and curiouser!'.\",\"description\":\"I do,' said the Mock Turtle, and to stand on their backs was the first figure!' said the Gryphon.\",\"price\":\"17843.06\",\"photo_path\":\"https:\\\/\\\/via.placeholder.com\\\/640x480.png\\\/0077bb?text=product+repellat\",\"created_at\":\"2021-07-02T02:24:23.000000Z\",\"updated_at\":\"2021-07-02T02:24:23.000000Z\",\"deleted_at\":null},{\"id\":6,\"category_id\":2,\"gender_id\":1,\"name\":\"Alice. 'Well, then,' the Gryphon at the flowers.\",\"description\":\"Queen's absence, and were quite dry again, the cook took the hookah out of sight: then it.\",\"price\":\"14219.29\",\"photo_path\":\"https:\\\/\\\/via.placeholder.com\\\/640x480.png\\\/003311?text=product+amet\",\"created_at\":\"2021-07-02T02:24:23.000000Z\",\"updated_at\":\"2021-07-02T02:24:23.000000Z\",\"deleted_at\":null},{\"id\":7,\"category_id\":4,\"gender_id\":4,\"name\":\"Dormouse say?' one of the table, but there were.\",\"description\":\"What happened to me! When I used to read fairy-tales, I fancied that kind of thing never happened.\",\"price\":\"84650.34\",\"photo_path\":\"https:\\\/\\\/via.placeholder.com\\\/640x480.png\\\/00ccdd?text=product+praesentium\",\"created_at\":\"2021-07-02T02:24:23.000000Z\",\"updated_at\":\"2021-07-02T02:24:23.000000Z\",\"deleted_at\":null},{\"id\":8,\"category_id\":3,\"gender_id\":2,\"name\":\"And yet I wish you could see it quite plainly.\",\"description\":\"The Queen turned angrily away from him, and very soon came to the end of the evening, beautiful.\",\"price\":\"78114.70\",\"photo_path\":\"https:\\\/\\\/via.placeholder.com\\\/640x480.png\\\/00aa11?text=product+sapiente\",\"created_at\":\"2021-07-02T02:24:23.000000Z\",\"updated_at\":\"2021-07-02T02:24:23.000000Z\",\"deleted_at\":null},{\"id\":9,\"category_id\":2,\"gender_id\":1,\"name\":\"White Rabbit blew three blasts on the bank, with.\",\"description\":\"I shan't go, at any rate: go and take it away!' There was no longer to be seen--everything seemed.\",\"price\":\"86292.68\",\"photo_path\":\"https:\\\/\\\/via.placeholder.com\\\/640x480.png\\\/0000bb?text=product+eligendi\",\"created_at\":\"2021-07-02T02:24:23.000000Z\",\"updated_at\":\"2021-07-02T02:24:23.000000Z\",\"deleted_at\":null},{\"id\":10,\"category_id\":2,\"gender_id\":3,\"name\":\"As she said these words her foot slipped, and in.\",\"description\":\"Gryphon went on, 'and most of 'em do.' 'I don't know much,' said the Caterpillar called after her.\",\"price\":\"60412.31\",\"photo_path\":\"https:\\\/\\\/via.placeholder.com\\\/640x480.png\\\/002299?text=product+aut\",\"created_at\":\"2021-07-02T02:24:23.000000Z\",\"updated_at\":\"2021-07-02T02:24:23.000000Z\",\"deleted_at\":null},{\"id\":11,\"category_id\":1,\"gender_id\":1,\"name\":\"Licensed Frozen Pants\",\"description\":\"zero administration\",\"price\":\"196.22\",\"photo_path\":\"\\\/usr\\\/libdata\\\/auto_invoice.application\",\"created_at\":\"2021-07-03T06:24:15.000000Z\",\"updated_at\":\"2021-07-03T06:24:15.000000Z\",\"deleted_at\":null},{\"id\":12,\"category_id\":1,\"gender_id\":1,\"name\":\"Intelligent Metal Shoes\",\"description\":\"maximized\",\"price\":\"674.86\",\"photo_path\":\"\\\/var\\\/log\\\/invoice_greece.tsv\",\"created_at\":\"2021-07-03T06:25:38.000000Z\",\"updated_at\":\"2021-07-03T06:25:38.000000Z\",\"deleted_at\":null}],\"first_page_url\":\"http:\\\/\\\/localhost\\\/api\\\/products?page=1\",\"from\":1,\"last_page\":6,\"last_page_url\":\"http:\\\/\\\/localhost\\\/api\\\/products?page=6\",\"links\":[{\"url\":null,\"label\":\"&laquo; Previous\",\"active\":false},{\"url\":\"http:\\\/\\\/localhost\\\/api\\\/products?page=1\",\"label\":\"1\",\"active\":true},{\"url\":\"http:\\\/\\\/localhost\\\/api\\\/products?page=2\",\"label\":\"2\",\"active\":false},{\"url\":\"http:\\\/\\\/localhost\\\/api\\\/products?page=3\",\"label\":\"3\",\"active\":false},{\"url\":\"http:\\\/\\\/localhost\\\/api\\\/products?page=4\",\"label\":\"4\",\"active\":false},{\"url\":\"http:\\\/\\\/localhost\\\/api\\\/products?page=5\",\"label\":\"5\",\"active\":false},{\"url\":\"http:\\\/\\\/localhost\\\/api\\\/products?page=6\",\"label\":\"6\",\"active\":false},{\"url\":\"http:\\\/\\\/localhost\\\/api\\\/products?page=2\",\"label\":\"Next &raquo;\",\"active\":false}],\"next_page_url\":\"http:\\\/\\\/localhost\\\/api\\\/products?page=2\",\"path\":\"http:\\\/\\\/localhost\\\/api\\\/products\",\"per_page\":12,\"prev_page_url\":null,\"to\":12,\"total\":71}",
+                            "body": "{\"current_page\":1,\"data\":[{\"id\":1,\"category_id\":2,\"gender_id\":2,\"name\":\"Yet you finished the guinea-pigs!' thought.\",\"description\":\"Mock Turtle drew a long time together.' 'Which is just the case with my wife; And the moral of.\",\"price\":\"78466.01\",\"photo_path\":\"https:\\\/\\\/via.placeholder.com\\\/640x480.png\\\/007700?text=product+rem\",\"created_at\":\"2021-08-26T08:22:27.000000Z\",\"updated_at\":\"2021-08-26T08:22:27.000000Z\",\"deleted_at\":null},{\"id\":2,\"category_id\":3,\"gender_id\":4,\"name\":\"Alice, 'how am I to do?' said Alice. 'Exactly.\",\"description\":\"All on a bough of a candle is like after the birds! Why, she'll eat a little different. But if I'm.\",\"price\":\"65290.20\",\"photo_path\":\"https:\\\/\\\/via.placeholder.com\\\/640x480.png\\\/00bb44?text=product+ad\",\"created_at\":\"2021-08-26T08:22:28.000000Z\",\"updated_at\":\"2021-08-26T08:22:28.000000Z\",\"deleted_at\":null},{\"id\":3,\"category_id\":1,\"gender_id\":4,\"name\":\"VERY short remarks, and she very soon came to.\",\"description\":\"How queer everything is queer to-day.' Just then her head impatiently; and, turning to Alice: he.\",\"price\":\"31101.43\",\"photo_path\":\"https:\\\/\\\/via.placeholder.com\\\/640x480.png\\\/0099ee?text=product+vitae\",\"created_at\":\"2021-08-26T08:22:28.000000Z\",\"updated_at\":\"2021-08-26T08:22:28.000000Z\",\"deleted_at\":null},{\"id\":4,\"category_id\":3,\"gender_id\":3,\"name\":\"Alice didn't think that very few things indeed.\",\"description\":\"I think.' And she thought it would be offended again. 'Mine is a long way back, and barking.\",\"price\":\"46521.99\",\"photo_path\":\"https:\\\/\\\/via.placeholder.com\\\/640x480.png\\\/008811?text=product+sed\",\"created_at\":\"2021-08-26T08:22:28.000000Z\",\"updated_at\":\"2021-08-26T08:22:28.000000Z\",\"deleted_at\":null},{\"id\":5,\"category_id\":4,\"gender_id\":3,\"name\":\"Allow me to introduce it.' 'I don't believe you.\",\"description\":\"No accounting for tastes! Sing her \\\"Turtle Soup,\\\" will you, old fellow?' The Mock Turtle's Story.\",\"price\":\"3691.30\",\"photo_path\":\"https:\\\/\\\/via.placeholder.com\\\/640x480.png\\\/003344?text=product+id\",\"created_at\":\"2021-08-26T08:22:28.000000Z\",\"updated_at\":\"2021-08-26T08:22:28.000000Z\",\"deleted_at\":null},{\"id\":6,\"category_id\":1,\"gender_id\":4,\"name\":\"Hatter said, tossing his head mournfully. 'Not.\",\"description\":\"See how eagerly the lobsters and the blades of grass, but she got to the Duchess: 'and the moral.\",\"price\":\"46905.93\",\"photo_path\":\"https:\\\/\\\/via.placeholder.com\\\/640x480.png\\\/0077ee?text=product+necessitatibus\",\"created_at\":\"2021-08-26T08:22:28.000000Z\",\"updated_at\":\"2021-08-26T08:22:28.000000Z\",\"deleted_at\":null},{\"id\":7,\"category_id\":2,\"gender_id\":2,\"name\":\"The Hatter shook his head mournfully. 'Not I!'.\",\"description\":\"Alice hastily, afraid that she had drunk half the bottle, she found herself lying on their slates.\",\"price\":\"19717.45\",\"photo_path\":\"https:\\\/\\\/via.placeholder.com\\\/640x480.png\\\/00eebb?text=product+consequatur\",\"created_at\":\"2021-08-26T08:22:28.000000Z\",\"updated_at\":\"2021-08-26T08:22:28.000000Z\",\"deleted_at\":null},{\"id\":8,\"category_id\":3,\"gender_id\":3,\"name\":\"I'M a Duchess,' she said this, she was talking.\",\"description\":\"DON'T know,' said Alice, very earnestly. 'I've had nothing else to do, and in THAT direction,'.\",\"price\":\"42657.67\",\"photo_path\":\"https:\\\/\\\/via.placeholder.com\\\/640x480.png\\\/0033ff?text=product+natus\",\"created_at\":\"2021-08-26T08:22:28.000000Z\",\"updated_at\":\"2021-08-26T08:22:28.000000Z\",\"deleted_at\":null},{\"id\":9,\"category_id\":3,\"gender_id\":2,\"name\":\"Only I don't believe you do either!' And the.\",\"description\":\"Queen left off, quite out of this ointment--one shilling the box-- Allow me to sell you a present.\",\"price\":\"86138.03\",\"photo_path\":\"https:\\\/\\\/via.placeholder.com\\\/640x480.png\\\/00ccaa?text=product+eaque\",\"created_at\":\"2021-08-26T08:22:28.000000Z\",\"updated_at\":\"2021-08-26T08:22:28.000000Z\",\"deleted_at\":null},{\"id\":10,\"category_id\":3,\"gender_id\":4,\"name\":\"Alice ventured to ask. 'Suppose we change the.\",\"description\":\"Alice again, in a low curtain she had felt quite relieved to see if she meant to take out of the.\",\"price\":\"95284.23\",\"photo_path\":\"https:\\\/\\\/via.placeholder.com\\\/640x480.png\\\/00ee11?text=product+aut\",\"created_at\":\"2021-08-26T08:22:28.000000Z\",\"updated_at\":\"2021-08-26T08:22:28.000000Z\",\"deleted_at\":null}],\"first_page_url\":\"http:\\\/\\\/localhost\\\/api\\\/products?page=1\",\"from\":1,\"last_page\":1,\"last_page_url\":\"http:\\\/\\\/localhost\\\/api\\\/products?page=1\",\"links\":[{\"url\":null,\"label\":\"&laquo; Previous\",\"active\":false},{\"url\":\"http:\\\/\\\/localhost\\\/api\\\/products?page=1\",\"label\":\"1\",\"active\":true},{\"url\":null,\"label\":\"Next &raquo;\",\"active\":false}],\"next_page_url\":null,\"path\":\"http:\\\/\\\/localhost\\\/api\\\/products\",\"per_page\":12,\"prev_page_url\":null,\"to\":10,\"total\":10}",
                             "name": null
                         }
                     ]
@@ -259,7 +259,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "4",
+                                    "value": "6",
                                     "description": "The ID of the product."
                                 }
                             ]
@@ -306,7 +306,7 @@
                                 }
                             ],
                             "code": 200,
-                            "body": "{\"id\":1,\"category_id\":2,\"gender_id\":1,\"name\":\"Just then she noticed that they had to stoop to.\",\"description\":\"Caterpillar sternly. 'Explain yourself!' 'I can't remember half of them--and it belongs to a.\",\"price\":\"34582.02\",\"photo_path\":\"https:\\\/\\\/via.placeholder.com\\\/640x480.png\\\/001188?text=product+sapiente\",\"created_at\":\"2021-07-02T02:24:22.000000Z\",\"updated_at\":\"2021-07-02T02:24:22.000000Z\",\"deleted_at\":null}",
+                            "body": "{\"product\":{\"id\":1,\"category_id\":2,\"gender_id\":2,\"name\":\"Yet you finished the guinea-pigs!' thought.\",\"description\":\"Mock Turtle drew a long time together.' 'Which is just the case with my wife; And the moral of.\",\"price\":\"78466.01\",\"photo_path\":\"https:\\\/\\\/via.placeholder.com\\\/640x480.png\\\/007700?text=product+rem\",\"created_at\":\"2021-08-26T08:22:27.000000Z\",\"updated_at\":\"2021-08-26T08:22:27.000000Z\",\"deleted_at\":null,\"product_details\":[{\"id\":1,\"product_id\":1,\"size\":\"cum\",\"color\":\"#dbe3ff\",\"units\":88,\"created_at\":\"2021-08-26T08:22:27.000000Z\",\"updated_at\":\"2021-08-26T08:22:27.000000Z\"},{\"id\":2,\"product_id\":1,\"size\":\"ea\",\"color\":\"#debf23\",\"units\":82,\"created_at\":\"2021-08-26T08:22:27.000000Z\",\"updated_at\":\"2021-08-26T08:22:27.000000Z\"}]},\"productDetails\":[{\"id\":1,\"product_id\":1,\"size\":\"cum\",\"color\":\"#dbe3ff\",\"units\":88,\"created_at\":\"2021-08-26T08:22:27.000000Z\",\"updated_at\":\"2021-08-26T08:22:27.000000Z\"},{\"id\":2,\"product_id\":1,\"size\":\"ea\",\"color\":\"#debf23\",\"units\":82,\"created_at\":\"2021-08-26T08:22:27.000000Z\",\"updated_at\":\"2021-08-26T08:22:27.000000Z\"}]}",
                             "name": null
                         }
                     ]
@@ -386,7 +386,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"product_detail_id\":1,\"quantity\":\"quod\"}"
+                            "raw": "{\"product_detail_id\":3.414,\"quantity\":\"ea\"}"
                         },
                         "description": ""
                     },
@@ -405,7 +405,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "nostrum",
+                                    "value": "enim",
                                     "description": "The ID of the cart item."
                                 }
                             ]
@@ -517,7 +517,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "15",
+                                    "value": "14",
                                     "description": "The ID of the order."
                                 }
                             ]
@@ -571,7 +571,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "6",
+                                    "value": "16",
                                     "description": "The ID of the order."
                                 }
                             ]
@@ -608,7 +608,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "2",
+                                    "value": "1",
                                     "description": "The ID of the order."
                                 }
                             ]

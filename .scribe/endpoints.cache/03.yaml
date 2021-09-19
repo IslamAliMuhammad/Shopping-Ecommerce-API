@@ -62,7 +62,7 @@ endpoints:
         name: id
         description: 'The ID of the order.'
         required: true
-        example: 15
+        example: 14
         type: integer
     queryParameters: []
     bodyParameters: []
@@ -94,7 +94,7 @@ endpoints:
         name: id
         description: 'The ID of the order.'
         required: true
-        example: 6
+        example: 16
         type: integer
     queryParameters: []
     bodyParameters:
@@ -123,7 +123,7 @@ endpoints:
         name: id
         description: 'The ID of the order.'
         required: true
-        example: 2
+        example: 1
         type: integer
     queryParameters: []
     bodyParameters: []

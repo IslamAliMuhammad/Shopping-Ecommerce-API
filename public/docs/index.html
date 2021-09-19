@@ -51,7 +51,7 @@
                             <li><a href="http://github.com/knuckleswtf/scribe">Documentation powered by Scribe ✍</a></li>
                     </ul>
             <ul class="toc-footer" id="last-updated">
-            <li>Last updated: August 21 2021</li>
+            <li>Last updated: September 19 2021</li>
         </ul>
 </div>
 <div class="page-wrapper">
@@ -68,7 +68,7 @@ You can switch the language used with the tabs at the top right (or from the nav
 <pre><code class="language-yaml">http://localhost</code></pre>
 
         <h1>Authenticating requests</h1>
-<p>To authenticate requests, include an <strong><code>Authorization</code></strong> header with the value <strong><code>"Bearer {API_TOKEN}"</code></strong>.</p>
+<p>This API is authenticated by sending an <strong><code>Authorization</code></strong> header with the value <strong><code>"Bearer {API_TOKEN}"</code></strong>.</p>
 <p>All authenticated endpoints are marked with a <code>requires authentication</code> badge in the documentation below.</p>
 <p>You can retrieve your API token by using register or login endpoint which return API token <b>Generate API token</b>.</p>
 
@@ -92,8 +92,8 @@ You can switch the language used with the tabs at the top right (or from the nav
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"equitzon@example.org\",
-    \"password\": \"delectus\"
+    \"email\": \"roy22@example.net\",
+    \"password\": \"exercitationem\"
 }"
 </code></pre>
 
@@ -107,8 +107,8 @@ const headers = {
 };
 
 let body = {
-    "email": "equitzon@example.org",
-    "password": "delectus"
+    "email": "roy22@example.net",
+    "password": "exercitationem"
 }
 
 fetch(url, {
@@ -195,10 +195,10 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"officiis\",
-    \"email\": \"haley.fae@example.org\",
-    \"password\": \"culpa\",
-    \"password_confirmation\": \"maxime\"
+    \"name\": \"voluptatum\",
+    \"email\": \"dahlia.brekke@example.net\",
+    \"password\": \"enim\",
+    \"password_confirmation\": \"consectetur\"
 }"
 </code></pre>
 
@@ -212,10 +212,10 @@ const headers = {
 };
 
 let body = {
-    "name": "officiis",
-    "email": "haley.fae@example.org",
-    "password": "culpa",
-    "password_confirmation": "maxime"
+    "name": "voluptatum",
+    "email": "dahlia.brekke@example.net",
+    "password": "enim",
+    "password_confirmation": "consectetur"
 }
 
 fetch(url, {
@@ -325,23 +325,23 @@ fetch(url, {
     --header "Accept: application/json" \
     --data "{
     \"product\": {
-        \"name\": \"aut\",
-        \"category_id\": \"voluptatem\",
-        \"gender_id\": \"molestiae\",
-        \"description\": \"explicabo\",
-        \"price\": \"fuga\",
-        \"photo_path\": \"fuga\"
+        \"name\": \"iusto\",
+        \"category_id\": \"maxime\",
+        \"gender_id\": \"odit\",
+        \"description\": \"inventore\",
+        \"price\": \"unde\",
+        \"photo_path\": \"dignissimos\"
     },
     \"product_details\": [
         {
-            \"size\": \"quaerat\",
-            \"color\": \"nisi\",
-            \"units\": \"dolores\"
+            \"size\": \"voluptatem\",
+            \"color\": \"sapiente\",
+            \"units\": \"consequuntur\"
         },
         {
-            \"size\": \"quaerat\",
-            \"color\": \"nisi\",
-            \"units\": \"dolores\"
+            \"size\": \"voluptatem\",
+            \"color\": \"sapiente\",
+            \"units\": \"consequuntur\"
         }
     ]
 }"
@@ -359,23 +359,23 @@ const headers = {
 
 let body = {
     "product": {
-        "name": "aut",
-        "category_id": "voluptatem",
-        "gender_id": "molestiae",
-        "description": "explicabo",
-        "price": "fuga",
-        "photo_path": "fuga"
+        "name": "iusto",
+        "category_id": "maxime",
+        "gender_id": "odit",
+        "description": "inventore",
+        "price": "unde",
+        "photo_path": "dignissimos"
     },
     "product_details": [
         {
-            "size": "quaerat",
-            "color": "nisi",
-            "units": "dolores"
+            "size": "voluptatem",
+            "color": "sapiente",
+            "units": "consequuntur"
         },
         {
-            "size": "quaerat",
-            "color": "nisi",
-            "units": "dolores"
+            "size": "voluptatem",
+            "color": "sapiente",
+            "units": "consequuntur"
         }
     ]
 }
@@ -541,22 +541,22 @@ fetch(url, {
 
 
 <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/products/7" \
+    "http://localhost/api/products/4" \
     --header "Authorization: Bearer {API_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"iste\",
-    \"category_id\": 4.795444,
-    \"gender_id\": 459,
-    \"description\": \"doloremque\",
-    \"price\": 1274238.2580099,
-    \"photo_path\": \"aperiam\"
+    \"name\": \"natus\",
+    \"category_id\": 155995057.69,
+    \"gender_id\": 6.6345,
+    \"description\": \"libero\",
+    \"price\": 629379244.2185,
+    \"photo_path\": \"consectetur\"
 }"
 </code></pre>
 
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/products/7"
+    "http://localhost/api/products/4"
 );
 
 const headers = {
@@ -566,12 +566,12 @@ const headers = {
 };
 
 let body = {
-    "name": "iste",
-    "category_id": 4.795444,
-    "gender_id": 459,
-    "description": "doloremque",
-    "price": 1274238.2580099,
-    "photo_path": "aperiam"
+    "name": "natus",
+    "category_id": 155995057.69,
+    "gender_id": 6.6345,
+    "description": "libero",
+    "price": 629379244.2185,
+    "photo_path": "consectetur"
 }
 
 fetch(url, {
@@ -708,13 +708,13 @@ fetch(url, {
 
 
 <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/products/2" \
+    "http://localhost/api/products/9" \
     --header "Authorization: Bearer {API_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
 
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/products/2"
+    "http://localhost/api/products/9"
 );
 
 const headers = {
@@ -842,152 +842,128 @@ access-control-allow-origin: *
         {
             &quot;id&quot;: 1,
             &quot;category_id&quot;: 2,
-            &quot;gender_id&quot;: 1,
-            &quot;name&quot;: &quot;Just then she noticed that they had to stoop to.&quot;,
-            &quot;description&quot;: &quot;Caterpillar sternly. 'Explain yourself!' 'I can't remember half of them--and it belongs to a.&quot;,
-            &quot;price&quot;: &quot;34582.02&quot;,
-            &quot;photo_path&quot;: &quot;https:\/\/via.placeholder.com\/640x480.png\/001188?text=product+sapiente&quot;,
-            &quot;created_at&quot;: &quot;2021-07-02T02:24:22.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2021-07-02T02:24:22.000000Z&quot;,
+            &quot;gender_id&quot;: 2,
+            &quot;name&quot;: &quot;Yet you finished the guinea-pigs!' thought.&quot;,
+            &quot;description&quot;: &quot;Mock Turtle drew a long time together.' 'Which is just the case with my wife; And the moral of.&quot;,
+            &quot;price&quot;: &quot;78466.01&quot;,
+            &quot;photo_path&quot;: &quot;https:\/\/via.placeholder.com\/640x480.png\/007700?text=product+rem&quot;,
+            &quot;created_at&quot;: &quot;2021-08-26T08:22:27.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2021-08-26T08:22:27.000000Z&quot;,
             &quot;deleted_at&quot;: null
         },
         {
             &quot;id&quot;: 2,
-            &quot;category_id&quot;: 2,
-            &quot;gender_id&quot;: 3,
-            &quot;name&quot;: &quot;I don't take this young lady to see what the.&quot;,
-            &quot;description&quot;: &quot;Alice could think of what sort it was) scratching and scrambling about in the long hall, and close.&quot;,
-            &quot;price&quot;: &quot;31585.28&quot;,
-            &quot;photo_path&quot;: &quot;https:\/\/via.placeholder.com\/640x480.png\/006611?text=product+fuga&quot;,
-            &quot;created_at&quot;: &quot;2021-07-02T02:24:22.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2021-07-02T02:24:22.000000Z&quot;,
+            &quot;category_id&quot;: 3,
+            &quot;gender_id&quot;: 4,
+            &quot;name&quot;: &quot;Alice, 'how am I to do?' said Alice. 'Exactly.&quot;,
+            &quot;description&quot;: &quot;All on a bough of a candle is like after the birds! Why, she'll eat a little different. But if I'm.&quot;,
+            &quot;price&quot;: &quot;65290.20&quot;,
+            &quot;photo_path&quot;: &quot;https:\/\/via.placeholder.com\/640x480.png\/00bb44?text=product+ad&quot;,
+            &quot;created_at&quot;: &quot;2021-08-26T08:22:28.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2021-08-26T08:22:28.000000Z&quot;,
             &quot;deleted_at&quot;: null
         },
         {
             &quot;id&quot;: 3,
-            &quot;category_id&quot;: 3,
-            &quot;gender_id&quot;: 2,
-            &quot;name&quot;: &quot;The Fish-Footman began by producing from under.&quot;,
-            &quot;description&quot;: &quot;Alice: 'besides, that's not a moment to be a grin, and she set to work, and very soon had to sing.&quot;,
-            &quot;price&quot;: &quot;90845.96&quot;,
-            &quot;photo_path&quot;: &quot;https:\/\/via.placeholder.com\/640x480.png\/0022ff?text=product+quia&quot;,
-            &quot;created_at&quot;: &quot;2021-07-02T02:24:22.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2021-07-02T02:24:22.000000Z&quot;,
+            &quot;category_id&quot;: 1,
+            &quot;gender_id&quot;: 4,
+            &quot;name&quot;: &quot;VERY short remarks, and she very soon came to.&quot;,
+            &quot;description&quot;: &quot;How queer everything is queer to-day.' Just then her head impatiently; and, turning to Alice: he.&quot;,
+            &quot;price&quot;: &quot;31101.43&quot;,
+            &quot;photo_path&quot;: &quot;https:\/\/via.placeholder.com\/640x480.png\/0099ee?text=product+vitae&quot;,
+            &quot;created_at&quot;: &quot;2021-08-26T08:22:28.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2021-08-26T08:22:28.000000Z&quot;,
             &quot;deleted_at&quot;: null
         },
         {
             &quot;id&quot;: 4,
-            &quot;category_id&quot;: 1,
-            &quot;gender_id&quot;: 2,
-            &quot;name&quot;: &quot;Cat, 'a dog's not mad. You grant that?' 'I.&quot;,
-            &quot;description&quot;: &quot;There was a table, with a round face, and was going to begin with; and being so many different.&quot;,
-            &quot;price&quot;: &quot;74243.71&quot;,
-            &quot;photo_path&quot;: &quot;https:\/\/via.placeholder.com\/640x480.png\/008877?text=product+quia&quot;,
-            &quot;created_at&quot;: &quot;2021-07-02T02:24:23.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2021-07-02T02:24:23.000000Z&quot;,
+            &quot;category_id&quot;: 3,
+            &quot;gender_id&quot;: 3,
+            &quot;name&quot;: &quot;Alice didn't think that very few things indeed.&quot;,
+            &quot;description&quot;: &quot;I think.' And she thought it would be offended again. 'Mine is a long way back, and barking.&quot;,
+            &quot;price&quot;: &quot;46521.99&quot;,
+            &quot;photo_path&quot;: &quot;https:\/\/via.placeholder.com\/640x480.png\/008811?text=product+sed&quot;,
+            &quot;created_at&quot;: &quot;2021-08-26T08:22:28.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2021-08-26T08:22:28.000000Z&quot;,
             &quot;deleted_at&quot;: null
         },
         {
             &quot;id&quot;: 5,
-            &quot;category_id&quot;: 1,
-            &quot;gender_id&quot;: 2,
-            &quot;name&quot;: &quot;The Pool of Tears 'Curiouser and curiouser!'.&quot;,
-            &quot;description&quot;: &quot;I do,' said the Mock Turtle, and to stand on their backs was the first figure!' said the Gryphon.&quot;,
-            &quot;price&quot;: &quot;17843.06&quot;,
-            &quot;photo_path&quot;: &quot;https:\/\/via.placeholder.com\/640x480.png\/0077bb?text=product+repellat&quot;,
-            &quot;created_at&quot;: &quot;2021-07-02T02:24:23.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2021-07-02T02:24:23.000000Z&quot;,
+            &quot;category_id&quot;: 4,
+            &quot;gender_id&quot;: 3,
+            &quot;name&quot;: &quot;Allow me to introduce it.' 'I don't believe you.&quot;,
+            &quot;description&quot;: &quot;No accounting for tastes! Sing her \&quot;Turtle Soup,\&quot; will you, old fellow?' The Mock Turtle's Story.&quot;,
+            &quot;price&quot;: &quot;3691.30&quot;,
+            &quot;photo_path&quot;: &quot;https:\/\/via.placeholder.com\/640x480.png\/003344?text=product+id&quot;,
+            &quot;created_at&quot;: &quot;2021-08-26T08:22:28.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2021-08-26T08:22:28.000000Z&quot;,
             &quot;deleted_at&quot;: null
         },
         {
             &quot;id&quot;: 6,
-            &quot;category_id&quot;: 2,
-            &quot;gender_id&quot;: 1,
-            &quot;name&quot;: &quot;Alice. 'Well, then,' the Gryphon at the flowers.&quot;,
-            &quot;description&quot;: &quot;Queen's absence, and were quite dry again, the cook took the hookah out of sight: then it.&quot;,
-            &quot;price&quot;: &quot;14219.29&quot;,
-            &quot;photo_path&quot;: &quot;https:\/\/via.placeholder.com\/640x480.png\/003311?text=product+amet&quot;,
-            &quot;created_at&quot;: &quot;2021-07-02T02:24:23.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2021-07-02T02:24:23.000000Z&quot;,
+            &quot;category_id&quot;: 1,
+            &quot;gender_id&quot;: 4,
+            &quot;name&quot;: &quot;Hatter said, tossing his head mournfully. 'Not.&quot;,
+            &quot;description&quot;: &quot;See how eagerly the lobsters and the blades of grass, but she got to the Duchess: 'and the moral.&quot;,
+            &quot;price&quot;: &quot;46905.93&quot;,
+            &quot;photo_path&quot;: &quot;https:\/\/via.placeholder.com\/640x480.png\/0077ee?text=product+necessitatibus&quot;,
+            &quot;created_at&quot;: &quot;2021-08-26T08:22:28.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2021-08-26T08:22:28.000000Z&quot;,
             &quot;deleted_at&quot;: null
         },
         {
             &quot;id&quot;: 7,
-            &quot;category_id&quot;: 4,
-            &quot;gender_id&quot;: 4,
-            &quot;name&quot;: &quot;Dormouse say?' one of the table, but there were.&quot;,
-            &quot;description&quot;: &quot;What happened to me! When I used to read fairy-tales, I fancied that kind of thing never happened.&quot;,
-            &quot;price&quot;: &quot;84650.34&quot;,
-            &quot;photo_path&quot;: &quot;https:\/\/via.placeholder.com\/640x480.png\/00ccdd?text=product+praesentium&quot;,
-            &quot;created_at&quot;: &quot;2021-07-02T02:24:23.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2021-07-02T02:24:23.000000Z&quot;,
+            &quot;category_id&quot;: 2,
+            &quot;gender_id&quot;: 2,
+            &quot;name&quot;: &quot;The Hatter shook his head mournfully. 'Not I!'.&quot;,
+            &quot;description&quot;: &quot;Alice hastily, afraid that she had drunk half the bottle, she found herself lying on their slates.&quot;,
+            &quot;price&quot;: &quot;19717.45&quot;,
+            &quot;photo_path&quot;: &quot;https:\/\/via.placeholder.com\/640x480.png\/00eebb?text=product+consequatur&quot;,
+            &quot;created_at&quot;: &quot;2021-08-26T08:22:28.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2021-08-26T08:22:28.000000Z&quot;,
             &quot;deleted_at&quot;: null
         },
         {
             &quot;id&quot;: 8,
             &quot;category_id&quot;: 3,
-            &quot;gender_id&quot;: 2,
-            &quot;name&quot;: &quot;And yet I wish you could see it quite plainly.&quot;,
-            &quot;description&quot;: &quot;The Queen turned angrily away from him, and very soon came to the end of the evening, beautiful.&quot;,
-            &quot;price&quot;: &quot;78114.70&quot;,
-            &quot;photo_path&quot;: &quot;https:\/\/via.placeholder.com\/640x480.png\/00aa11?text=product+sapiente&quot;,
-            &quot;created_at&quot;: &quot;2021-07-02T02:24:23.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2021-07-02T02:24:23.000000Z&quot;,
+            &quot;gender_id&quot;: 3,
+            &quot;name&quot;: &quot;I'M a Duchess,' she said this, she was talking.&quot;,
+            &quot;description&quot;: &quot;DON'T know,' said Alice, very earnestly. 'I've had nothing else to do, and in THAT direction,'.&quot;,
+            &quot;price&quot;: &quot;42657.67&quot;,
+            &quot;photo_path&quot;: &quot;https:\/\/via.placeholder.com\/640x480.png\/0033ff?text=product+natus&quot;,
+            &quot;created_at&quot;: &quot;2021-08-26T08:22:28.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2021-08-26T08:22:28.000000Z&quot;,
             &quot;deleted_at&quot;: null
         },
         {
             &quot;id&quot;: 9,
-            &quot;category_id&quot;: 2,
-            &quot;gender_id&quot;: 1,
-            &quot;name&quot;: &quot;White Rabbit blew three blasts on the bank, with.&quot;,
-            &quot;description&quot;: &quot;I shan't go, at any rate: go and take it away!' There was no longer to be seen--everything seemed.&quot;,
-            &quot;price&quot;: &quot;86292.68&quot;,
-            &quot;photo_path&quot;: &quot;https:\/\/via.placeholder.com\/640x480.png\/0000bb?text=product+eligendi&quot;,
-            &quot;created_at&quot;: &quot;2021-07-02T02:24:23.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2021-07-02T02:24:23.000000Z&quot;,
+            &quot;category_id&quot;: 3,
+            &quot;gender_id&quot;: 2,
+            &quot;name&quot;: &quot;Only I don't believe you do either!' And the.&quot;,
+            &quot;description&quot;: &quot;Queen left off, quite out of this ointment--one shilling the box-- Allow me to sell you a present.&quot;,
+            &quot;price&quot;: &quot;86138.03&quot;,
+            &quot;photo_path&quot;: &quot;https:\/\/via.placeholder.com\/640x480.png\/00ccaa?text=product+eaque&quot;,
+            &quot;created_at&quot;: &quot;2021-08-26T08:22:28.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2021-08-26T08:22:28.000000Z&quot;,
             &quot;deleted_at&quot;: null
         },
         {
             &quot;id&quot;: 10,
-            &quot;category_id&quot;: 2,
-            &quot;gender_id&quot;: 3,
-            &quot;name&quot;: &quot;As she said these words her foot slipped, and in.&quot;,
-            &quot;description&quot;: &quot;Gryphon went on, 'and most of 'em do.' 'I don't know much,' said the Caterpillar called after her.&quot;,
-            &quot;price&quot;: &quot;60412.31&quot;,
-            &quot;photo_path&quot;: &quot;https:\/\/via.placeholder.com\/640x480.png\/002299?text=product+aut&quot;,
-            &quot;created_at&quot;: &quot;2021-07-02T02:24:23.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2021-07-02T02:24:23.000000Z&quot;,
-            &quot;deleted_at&quot;: null
-        },
-        {
-            &quot;id&quot;: 11,
-            &quot;category_id&quot;: 1,
-            &quot;gender_id&quot;: 1,
-            &quot;name&quot;: &quot;Licensed Frozen Pants&quot;,
-            &quot;description&quot;: &quot;zero administration&quot;,
-            &quot;price&quot;: &quot;196.22&quot;,
-            &quot;photo_path&quot;: &quot;\/usr\/libdata\/auto_invoice.application&quot;,
-            &quot;created_at&quot;: &quot;2021-07-03T06:24:15.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2021-07-03T06:24:15.000000Z&quot;,
-            &quot;deleted_at&quot;: null
-        },
-        {
-            &quot;id&quot;: 12,
-            &quot;category_id&quot;: 1,
-            &quot;gender_id&quot;: 1,
-            &quot;name&quot;: &quot;Intelligent Metal Shoes&quot;,
-            &quot;description&quot;: &quot;maximized&quot;,
-            &quot;price&quot;: &quot;674.86&quot;,
-            &quot;photo_path&quot;: &quot;\/var\/log\/invoice_greece.tsv&quot;,
-            &quot;created_at&quot;: &quot;2021-07-03T06:25:38.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2021-07-03T06:25:38.000000Z&quot;,
+            &quot;category_id&quot;: 3,
+            &quot;gender_id&quot;: 4,
+            &quot;name&quot;: &quot;Alice ventured to ask. 'Suppose we change the.&quot;,
+            &quot;description&quot;: &quot;Alice again, in a low curtain she had felt quite relieved to see if she meant to take out of the.&quot;,
+            &quot;price&quot;: &quot;95284.23&quot;,
+            &quot;photo_path&quot;: &quot;https:\/\/via.placeholder.com\/640x480.png\/00ee11?text=product+aut&quot;,
+            &quot;created_at&quot;: &quot;2021-08-26T08:22:28.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2021-08-26T08:22:28.000000Z&quot;,
             &quot;deleted_at&quot;: null
         }
     ],
     &quot;first_page_url&quot;: &quot;http:\/\/localhost\/api\/products?page=1&quot;,
     &quot;from&quot;: 1,
-    &quot;last_page&quot;: 6,
-    &quot;last_page_url&quot;: &quot;http:\/\/localhost\/api\/products?page=6&quot;,
+    &quot;last_page&quot;: 1,
+    &quot;last_page_url&quot;: &quot;http:\/\/localhost\/api\/products?page=1&quot;,
     &quot;links&quot;: [
         {
             &quot;url&quot;: null,
@@ -1000,42 +976,17 @@ access-control-allow-origin: *
             &quot;active&quot;: true
         },
         {
-            &quot;url&quot;: &quot;http:\/\/localhost\/api\/products?page=2&quot;,
-            &quot;label&quot;: &quot;2&quot;,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http:\/\/localhost\/api\/products?page=3&quot;,
-            &quot;label&quot;: &quot;3&quot;,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http:\/\/localhost\/api\/products?page=4&quot;,
-            &quot;label&quot;: &quot;4&quot;,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http:\/\/localhost\/api\/products?page=5&quot;,
-            &quot;label&quot;: &quot;5&quot;,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http:\/\/localhost\/api\/products?page=6&quot;,
-            &quot;label&quot;: &quot;6&quot;,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http:\/\/localhost\/api\/products?page=2&quot;,
+            &quot;url&quot;: null,
             &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
             &quot;active&quot;: false
         }
     ],
-    &quot;next_page_url&quot;: &quot;http:\/\/localhost\/api\/products?page=2&quot;,
+    &quot;next_page_url&quot;: null,
     &quot;path&quot;: &quot;http:\/\/localhost\/api\/products&quot;,
     &quot;per_page&quot;: 12,
     &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: 12,
-    &quot;total&quot;: 71
+    &quot;to&quot;: 10,
+    &quot;total&quot;: 10
 }</code>
  </pre>
     </span>
@@ -1092,12 +1043,12 @@ access-control-allow-origin: *
 
 
 <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/products/4" \
+    --get "http://localhost/api/products/6" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
 
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/products/4"
+    "http://localhost/api/products/6"
 );
 
 const headers = {
@@ -1128,16 +1079,58 @@ access-control-allow-origin: *
         </details>         <pre>
 
 <code class="language-json">{
-    &quot;id&quot;: 1,
-    &quot;category_id&quot;: 2,
-    &quot;gender_id&quot;: 1,
-    &quot;name&quot;: &quot;Just then she noticed that they had to stoop to.&quot;,
-    &quot;description&quot;: &quot;Caterpillar sternly. 'Explain yourself!' 'I can't remember half of them--and it belongs to a.&quot;,
-    &quot;price&quot;: &quot;34582.02&quot;,
-    &quot;photo_path&quot;: &quot;https:\/\/via.placeholder.com\/640x480.png\/001188?text=product+sapiente&quot;,
-    &quot;created_at&quot;: &quot;2021-07-02T02:24:22.000000Z&quot;,
-    &quot;updated_at&quot;: &quot;2021-07-02T02:24:22.000000Z&quot;,
-    &quot;deleted_at&quot;: null
+    &quot;product&quot;: {
+        &quot;id&quot;: 1,
+        &quot;category_id&quot;: 2,
+        &quot;gender_id&quot;: 2,
+        &quot;name&quot;: &quot;Yet you finished the guinea-pigs!' thought.&quot;,
+        &quot;description&quot;: &quot;Mock Turtle drew a long time together.' 'Which is just the case with my wife; And the moral of.&quot;,
+        &quot;price&quot;: &quot;78466.01&quot;,
+        &quot;photo_path&quot;: &quot;https:\/\/via.placeholder.com\/640x480.png\/007700?text=product+rem&quot;,
+        &quot;created_at&quot;: &quot;2021-08-26T08:22:27.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2021-08-26T08:22:27.000000Z&quot;,
+        &quot;deleted_at&quot;: null,
+        &quot;product_details&quot;: [
+            {
+                &quot;id&quot;: 1,
+                &quot;product_id&quot;: 1,
+                &quot;size&quot;: &quot;cum&quot;,
+                &quot;color&quot;: &quot;#dbe3ff&quot;,
+                &quot;units&quot;: 88,
+                &quot;created_at&quot;: &quot;2021-08-26T08:22:27.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2021-08-26T08:22:27.000000Z&quot;
+            },
+            {
+                &quot;id&quot;: 2,
+                &quot;product_id&quot;: 1,
+                &quot;size&quot;: &quot;ea&quot;,
+                &quot;color&quot;: &quot;#debf23&quot;,
+                &quot;units&quot;: 82,
+                &quot;created_at&quot;: &quot;2021-08-26T08:22:27.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2021-08-26T08:22:27.000000Z&quot;
+            }
+        ]
+    },
+    &quot;productDetails&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;product_id&quot;: 1,
+            &quot;size&quot;: &quot;cum&quot;,
+            &quot;color&quot;: &quot;#dbe3ff&quot;,
+            &quot;units&quot;: 88,
+            &quot;created_at&quot;: &quot;2021-08-26T08:22:27.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2021-08-26T08:22:27.000000Z&quot;
+        },
+        {
+            &quot;id&quot;: 2,
+            &quot;product_id&quot;: 1,
+            &quot;size&quot;: &quot;ea&quot;,
+            &quot;color&quot;: &quot;#debf23&quot;,
+            &quot;units&quot;: 82,
+            &quot;created_at&quot;: &quot;2021-08-26T08:22:27.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2021-08-26T08:22:27.000000Z&quot;
+        }
+    ]
 }</code>
  </pre>
     </span>
@@ -1315,8 +1308,8 @@ access-control-allow-origin: *
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"product_detail_id\": 1,
-    \"quantity\": \"quod\"
+    \"product_detail_id\": 3.414,
+    \"quantity\": \"ea\"
 }"
 </code></pre>
 
@@ -1331,8 +1324,8 @@ const headers = {
 };
 
 let body = {
-    "product_detail_id": 1,
-    "quantity": "quod"
+    "product_detail_id": 3.414,
+    "quantity": "ea"
 }
 
 fetch(url, {
@@ -1424,13 +1417,13 @@ fetch(url, {
 
 
 <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/cart_item/nostrum" \
+    "http://localhost/api/cart_item/enim" \
     --header "Authorization: Bearer {API_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
 
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/cart_item/nostrum"
+    "http://localhost/api/cart_item/enim"
 );
 
 const headers = {
@@ -1709,13 +1702,13 @@ fetch(url, {
 
 
 <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/orders/15" \
+    --get "http://localhost/api/orders/14" \
     --header "Authorization: Bearer {API_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
 
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/orders/15"
+    "http://localhost/api/orders/14"
 );
 
 const headers = {
@@ -1820,7 +1813,7 @@ access-control-allow-origin: *
 
 
 <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/orders/6" \
+    "http://localhost/api/orders/16" \
     --header "Authorization: Bearer {API_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -1830,7 +1823,7 @@ access-control-allow-origin: *
 </code></pre>
 
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/orders/6"
+    "http://localhost/api/orders/16"
 );
 
 const headers = {
@@ -1947,13 +1940,13 @@ fetch(url, {
 
 
 <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/orders/2" \
+    "http://localhost/api/orders/1" \
     --header "Authorization: Bearer {API_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
 
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/orders/2"
+    "http://localhost/api/orders/1"
 );
 
 const headers = {

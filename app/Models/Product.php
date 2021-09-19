@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Order;
-use App\Models\ProductDetails;
+use App\Models\ProductDetail;
 
 class Product extends Model
 {
@@ -25,6 +25,6 @@ class Product extends Model
     }
     
     public function productDetails(){
-        return $this->hasMany(ProductDetails::class, 'product_id');
+        return $this->hasMany(ProductDetail::class, 'product_id');
     }
 }

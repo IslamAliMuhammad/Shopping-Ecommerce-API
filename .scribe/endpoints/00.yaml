@@ -19,13 +19,13 @@ endpoints:
         name: email
         description: 'Must be a valid email address.'
         required: true
-        example: equitzon@example.org
+        example: roy22@example.net
         type: string
       password:
         name: password
         description: ''
         required: true
-        example: delectus
+        example: exercitationem
         type: string
     responses: []
     responseFields: []
@@ -47,25 +47,25 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: officiis
+        example: voluptatum
         type: string
       email:
         name: email
         description: 'Must be a valid email address.'
         required: true
-        example: haley.fae@example.org
+        example: dahlia.brekke@example.net
         type: string
       password:
         name: password
         description: ''
         required: true
-        example: culpa
+        example: enim
         type: string
       password_confirmation:
         name: password_confirmation
         description: ''
         required: true
-        example: maxime
+        example: consectetur
         type: string
     responses: []
     responseFields: []
