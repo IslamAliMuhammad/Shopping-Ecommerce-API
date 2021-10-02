@@ -4,14 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\User;
-use App\Models\Order;
-class ProductDetail extends Model
+use App\Models\Size;
+
+class ProductColor extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['product_id', 'size', 'color', 'units'];
+    protected $fillable = ['product_id', 'hex_code'];
     
+    public function sizes() {
+        return $this->belongsToMany(Size::class, 'color_size', 'product_color_id', 'size_id')->withPivot('units');
+    }
 
     public function product(){
         return $this->belongsTo(Product::class, 'product_id');

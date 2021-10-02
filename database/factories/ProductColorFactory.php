@@ -2,18 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Photo;
-use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\ProductColor;
-
-class PhotoFactory extends Factory
+use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Product;
+class ProductColorFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Photo::class;
+    protected $model = ProductColor::class;
 
     /**
      * Define the model's default state.
@@ -24,8 +23,8 @@ class PhotoFactory extends Factory
     {
         return [
             //
-            'product_color_id' => ProductColor::factory(),
-            'path' => $this->faker->imageUrl(640, 480, 'product', true),
+            'product_id' => Product::factory(),
+            'hex_code' => $this->faker->hexColor(),
         ];
     }
 }

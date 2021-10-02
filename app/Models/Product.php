@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Order;
-use App\Models\ProductDetail;
+use App\Models\ProductColor;
 
 class Product extends Model
 {
@@ -24,7 +24,7 @@ class Product extends Model
         return $this->hasMay(Order::class);
     }
     
-    public function productDetails(){
-        return $this->hasMany(ProductDetail::class, 'product_id');
+    public function ProductColors(){
+        return $this->hasMany(ProductColor::class, 'product_id');
     }
 }

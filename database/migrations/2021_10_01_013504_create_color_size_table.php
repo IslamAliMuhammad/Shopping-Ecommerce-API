@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductDetailsTable extends Migration
+class CreateColorSizeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateProductDetailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_details', function (Blueprint $table) {
+        Schema::create('color_size', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id')->constrained()->onDelete('cascade');
-            $table->string('size');
-            $table->string('color');
+            $table->foreignId('product_color_id')->constrained()->onDelete('cascade');
+            $table->foreignId('size_id')->constrained()->onDelete('cascade');
             $table->integer('units');
             $table->timestamps();
         });
@@ -30,6 +29,6 @@ class CreateProductDetailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_details');
+        Schema::dropIfExists('color_size');
     }
 }

@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Database\Seeders\GenderSeeder;
 use Database\Seeders\CategorySeeder;
-
+use Database\Seeders\SizeSeeder;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             GenderSeeder::class,
             CategorySeeder::class,
+            SizeSeeder::class,
         ]);
     }
 }

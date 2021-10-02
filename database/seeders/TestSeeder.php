@@ -5,9 +5,10 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Product;
-use App\Models\ProductDetail;
+use App\Models\ProductColor;
 use App\Models\Photo;
 use App\Models\Order;
+
 class TestSeeder extends Seeder
 {
     /**
@@ -22,8 +23,10 @@ class TestSeeder extends Seeder
         $users = $this->createUsers(5);
 
         foreach($users as $user){
-            $user->productDetails()->attach($this->createProductDetails(2), ['quantity' => 10]);
+            $user->ProductColors()->attach($this->createProductColors(2), ['quantity' => 10]);
         }
+
+        $this->attachColorSize([1, 2, 3, 4, 5]);
 
         $this->createOrders(5, 2);
     }
@@ -41,19 +44,19 @@ class TestSeeder extends Seeder
     /**
      * Create dummy data for associated tables product_details, products, and photos.
      * 
-     * @param int $productDetailsNum Number of product_detais to create
+     * @param int $ProductColorsNum Number of product_detais to create
      * @param int $photosNum Number of photo for product_details to create
-     * @return App\Models\ProductDetail
+     * @return App\Models\ProductColor
      */
-    public function createProductDetails($productDetailsNum, $photosNum = 5) {
+    public function createProductColors($ProductColorsNum, $photosNum = 5) {
 
-        $productDetails = ProductDetail::factory()->count($productDetailsNum)->for(Product::factory())->create();
+        $ProductColors = ProductColor::factory()->count($ProductColorsNum)->for(Product::factory())->create();
 
-        foreach($productDetails as $productDetail){
-            Photo::factory()->count($photosNum)->for($productDetail)->create();
+        foreach($ProductColors as $ProductColor){
+            Photo::factory()->count($photosNum)->for($ProductColor)->create();
         }
 
-        return $productDetails;
+        return $ProductColors;
     }
 
     /**
@@ -61,20 +64,28 @@ class TestSeeder extends Seeder
      * Create order to each user with provided number of product_details.
      * 
      * @param int $usersNum Number of users to create
-     * @param int $productDetailsNum Number of product_details per order to create
+     * @param int $ProductColorsNum Number of product_details per order to create
      * @return void
      */
-    public function createOrders($usersNum, $productDetailsNum){
+    public function createOrders($usersNum, $ProductColorsNum){
         $users = $this->createUsers($usersNum);
 
         foreach($users as $user){
             $order = Order::factory()->for($user)->create();
 
-            $productDetails = $this->createProductDetails($productDetailsNum);
+            $ProductColors = $this->createProductColors($ProductColorsNum);
 
-           $order->productDetails()->attach($productDetails, ['quantity' => 5]);
+           $order->ProductColors()->attach($ProductColors, ['quantity' => 5]);
         }
 
+    }
+
+    public function attachColorSize($sizeIds) {
+        $productColors = ProductColor::all();
+
+        foreach($productColors as $productColor){
+            $productColor->sizes()->attach($sizeIds, ['units' => rand(5, 100)]);
+        }
     }
 
 
