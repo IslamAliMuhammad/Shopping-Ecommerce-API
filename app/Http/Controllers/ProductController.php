@@ -101,9 +101,8 @@ class ProductController extends Controller
     public function show(Product $product) 
     {
         //
-        $productDetails = $product->productDetails;
-        
-        return response()->json(['product' => $product, 'productDetails' => $productDetails], 200);
+        $Product = $product::with('ProductColors.sizes')->get();
+        return response()->json(['product' => $Product], 200);
     }
 
 
