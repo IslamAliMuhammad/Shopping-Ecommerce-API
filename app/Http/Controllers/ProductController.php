@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\ProductColor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\ProductDetail;
@@ -101,8 +102,10 @@ class ProductController extends Controller
     public function show(Product $product) 
     {
         //
-        $Product = $product::with('ProductColors.sizes')->get();
-        return response()->json(['product' => $Product], 200);
+
+        $productColors = ProductColor::with('sizes')->where('product_id', $product->id)->get();
+
+        return response()->json(['product' => $product, 'productColors' => $productColors], 200);
     }
 
 
