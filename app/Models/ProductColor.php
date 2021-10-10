@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Size;
+use App\Models\CartItem;
+use App\Models\OrderItem;
 
 class ProductColor extends Model
 {
@@ -25,10 +27,10 @@ class ProductColor extends Model
     }
 
     public function users(){
-        return $this->belongsToMany(User::class, 'cart_item', 'product_detail_id', 'user_id')->withPivot('quantity');
+        return $this->belongsToMany(User::class, 'cart_item', 'product_detail_id', 'user_id')->using(CartItem::class)->withPivot('quantity');
     }
 
     public function orders(){
-        return $this->belongsToMany(Order::class, 'order_item', 'product_detail_id', 'order_id')->withPivot('quantity');
+        return $this->belongsToMany(Order::class, 'order_item', 'product_detail_id', 'order_id')->using(OrderItem::class)->withPivot('quantity');
     }
 }

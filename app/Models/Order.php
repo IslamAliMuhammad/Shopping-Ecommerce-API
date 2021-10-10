@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\ProductColor;
+use App\Models\OrderItem;
 class Order extends Model
 {
     use HasFactory;
@@ -20,6 +21,6 @@ class Order extends Model
     }
 
     public function ProductColors(){
-        return $this->belongsToMany(ProductColor::class, 'order_item', 'order_id', 'product_color_id')->withPivot('quantity');
+        return $this->belongsToMany(ProductColor::class, 'order_item', 'order_id', 'product_color_id')->using(OrderItem::class)->withPivot('quantity');
     }
 }

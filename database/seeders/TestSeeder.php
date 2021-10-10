@@ -23,7 +23,7 @@ class TestSeeder extends Seeder
         $users = $this->createUsers(5);
 
         foreach($users as $user){
-            $user->ProductColors()->attach($this->createProductColors(2), ['quantity' => 10]);
+            $user->ProductColors()->attach($this->createProductColors(2), ['quantity' => 10, 'size_id' => rand(1, 5)]);
         }
 
         $this->attachColorSize([1, 2, 3, 4, 5]);
@@ -75,7 +75,7 @@ class TestSeeder extends Seeder
 
             $ProductColors = $this->createProductColors($ProductColorsNum);
 
-           $order->ProductColors()->attach($ProductColors, ['quantity' => 5]);
+           $order->ProductColors()->attach($ProductColors, ['quantity' => 5, 'size_id' => rand(1, 5)]);
         }
 
     }

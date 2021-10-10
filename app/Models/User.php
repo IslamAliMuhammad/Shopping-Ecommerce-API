@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use App\Models\Order;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\ProductColor;
-
+use App\Models\CartItem;
 class User extends Authenticatable
 {
     use HasFactory, Notifiable, HasApiTokens;
@@ -50,6 +50,6 @@ class User extends Authenticatable
     }
 
     public function ProductColors(){
-        return $this->belongsToMany(ProductColor::class, 'cart_item', 'user_id', 'product_color_id')->withPivot('quantity');
+        return $this->belongsToMany(ProductColor::class, 'cart_item', 'user_id', 'product_color_id')->using(CartItem::class)->withPivot('quantity');
     }
 }
