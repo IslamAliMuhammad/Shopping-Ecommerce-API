@@ -13,8 +13,8 @@ class Size extends Model
 
     protected $fillable = ['code'];
 
-    public function product_colors() {
-        return $this->belongsToMany(ProductColor::class, 'color_size', 'size_id', 'product_color_id')->withPivot('units');
+    public function productColors() {
+        return $this->belongsToMany(ProductColor::class, 'color_size', 'size_id', 'product_color_id')->uning(ColorSize::class)->withPivot('units');
     }
 
     public function cartItems() {

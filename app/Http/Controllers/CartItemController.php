@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\ProductDetail;
+use App\Models\ProductColor;
+use App\Models\Size;
+use App\Models\CartItem;
+use App\Models\ColorSize;
 
 /**
  * @group cart_items
@@ -18,7 +21,7 @@ class CartItemController extends Controller
     public function index()
     {
         //
-        return response()->json(["productDetails" => auth()->user()->productDetails], 200);
+        return response()->json(["cartItems" => CartItem::where('user_id', auth()->id())->with(['productColor.product', 'size'])->get()], 200);
     }
 
     /**
@@ -31,20 +34,25 @@ class CartItemController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $productDetail = ProductDetail::find($request->product_detail_id);
-        $units = $productDetail->units;
+        //  
 
-        $validated = $request->validate([
-            "product_detail_id" => "required|numeric|exists:product_details,id",
-            "quantity" => "required|numeric|max:$units"
+        $productColor = ProductColor::findOrFail($request->product_color_id);
+        $size = Size::findOrFail($request->size_id);
+        $colorSizePivotModel = ColorSize::colorSizeModel($productColor, $size);
+
+        $request->validate([
+            "product_color_id" => "required|numeric|exists:product_colors,id",
+            "size_id" => ["required", "numeric", "exists:sizes,id"],
+            "quantity" => "required|numeric|lte:$colorSizePivotModel->units"
         ]);
-
-        auth()->user()->productDetails()->attach($request->product_detail_id, ['quantity' => $request->quantity]);
-
-        return response()->json(['message' => 'Product added to your cart successfully']);
-
+        
+        // Attach to cart_item pivot
+        auth()->user()->productColors()->attach($request->product_color_id, ['size_id' => $request->size_id, 'quantity' => $request->quantity]);
+        
+        return response()->json(["message" => "Successfully added to your cart!"], 200);
     }
+
+
 
     /**
      * Remove the specified resource from storage.
@@ -52,9 +60,12 @@ class CartItemController extends Controller
      * @param  int  $id for product details
      * @return \Illuminate\Http\Response
      */
-    public function destroy($productDetailId)
+    public function destroy(CartItem $cartItem)
     {
         //
-        auth()->user()->productDetails()->detach($productDetailId);
+        $cartItem->delete();
+
+        return response()->json(['message' => 'Product successfully deleted from your cart!'], 200);
     }
+
 }

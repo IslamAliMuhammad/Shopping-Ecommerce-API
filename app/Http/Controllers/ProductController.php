@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\ProductColor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Validator;
-use App\Models\ProductDetail;
 
 /**
  * @group products
@@ -34,60 +34,57 @@ class ProductController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
-     * 
-     * @bodyParam product object
-     * 
-     * @bodyParam product.name string required 
-     * @bodyParam product.category_id numeric required
-     * @bodyParam product.gender_id numeric required
-     * @bodyParam product.description string required
-     * @bodyParam product.price numeric required
-     * @bodyParam product.photo_path string required
-     * 
-     * 
-     * 
-     * @bodyParam product_details object[]
-     * 
-     * @bodyParam product_details[].size string required 
-     * @bodyParam product_details[].color string required 
-     * @bodyParam product_details[].units numeric required 
      */
+
     public function store(Request $request)
     {
         $this->authorize('create', Product::class);
-
-        // Validate and create product 
-        $validator = Validator::make($request->product, [
+        // Create product
+        $productValidated = $request->validate([
             'name' => 'required|string',
             'category_id' => 'required|numeric|exists:categories,id',
             'gender_id' => 'required|numeric|exists:genders,id',
             'description' => 'required|string',
             'price' => 'required|numeric',
             'photo_path' => 'required|string',
+        ]);     
+        $product = Product::create($productValidated);
+
+        // Create product_color
+        $productColorValidated = Validator::make($request->colors, [
+            '*.hex_code' => 'string',
         ])->validate();
 
-        $product = Product::create($validator);
-        
-        $productDetails = [];
+        $productColors = $product->ProductColors()->createMany($productColorValidated);
 
-        foreach($request->product_details as $productDetail){
-            // Validate ad create product details for product was created
-            $validator = Validator::make($productDetail, [
-                'size' => 'required|string',
-                'color' => 'required|string',
-                'units' => 'required|numeric'
-            ])->validate();
+        // Validate sizes with thier units
+        $sizesValidated = Validator::make($request->colors, [
+            '*.sizes' => 'required|array',
+        ])->validate();
 
-            $validator['product_id'] = $product->id;
+        // Validate sizes
+        $sizesValidated = Validator::make($sizesValidated, [
+            '*.sizes.*.size_id' => 'required|numeric',
+            '*.sizes.*.units' => 'required|numeric'
 
-            $productDetail = ProductDetail::create($validator);
+        ])->validate();
 
-            array_push($productDetails, $productDetail);
+        // Attach product_color with thier sizes & units
+        foreach($productColors as $key => $productColor){
+            $sizesPrepared = $this->prepareSizesToAttach(Arr::flatten($sizesValidated, 1)[$key]);
+            $productColor->sizes()->attach($sizesPrepared);
         }
-       
 
+        return response()->json(["message" => "Product successfully created!", "product_id" => $product->id] , 201);
+    }
 
-        return response()->json(['product' => $product, 'product_details' => $productDetails], 201);
+    public function prepareSizesToAttach($producColorSizes){
+        $sizesPrepared = [];
+        foreach($producColorSizes as $productColorSize) {
+            $sizesPrepared += [$productColorSize['size_id'] => ['units' => $productColorSize['units']]];
+        }
+
+        return $sizesPrepared;
     }
 
     /**
@@ -132,7 +129,7 @@ class ProductController extends Controller
         ]);
 
         $product->update($validated);
-        return response()->json(['message' => 'Product successfully updated'], 200);
+        return response()->json(['message' => 'Product successfully updated!'], 200);
     }
 
     /**
@@ -148,6 +145,6 @@ class ProductController extends Controller
 
         $product->delete();
         
-        return response()->json(['message' => 'Product successfully deleted'], 200);
+        return response()->json(['message' => 'Product successfully deleted!'], 200);
     }
 }

@@ -1,0 +1,2392 @@
+{
+	"info": {
+		"_postman_id": "5794572f-cd17-4582-a4f4-d9b933d87538",
+		"name": "e-commece-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "users/register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonResponse = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"IslamAli\",\r\n    \"email\": \"islam.ali.muhammad@gmail.com\",\r\n    \"password\": \"123456789\",\r\n    \"password_confirmation\": \"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "users/login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonResponse = pm.response.json();\r",
+									"\r",
+									"\r",
+									"pm.collectionVariables.set(\"api_token\", jsonResponse.token);\r",
+									"\r",
+									"pm.test(\"Response contains token property\", function () {\r",
+									"    pm.expect(jsonResponse).to.have.property('token');\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin@laravel.com\",\r\n    \"password\": \"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "products",
+			"item": [
+				{
+					"name": "success",
+					"item": [
+						{
+							"name": "products",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"const jsonResponse = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Response contains data property\", function () {\r",
+											"    pm.expect(jsonResponse).to.have.property(\"data\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept": true
+								}
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/products",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "products",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const jsonResponse = pm.response.json();\r",
+											"\r",
+											"pm.collectionVariables.set(\"product_id\", jsonResponse.product_id);\r",
+											"\r",
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"polo shirt\",\r\n    \"category_id\": 1,\r\n    \"gender_id\": 1,\r\n    \"description\": \"Good and comfort\" ,\r\n    \"price\": 500,\r\n    \"photo_path\": \"https://m.media-amazon.com/images/I/31rTv9sl3TS._AC_SY780_.jpg\",\r\n    \"colors\": [\r\n        {\r\n            \"hex_code\": \"#7133FF\", \r\n            \"sizes\": [\r\n                {\"size_id\": 1, \"units\": 20}, \r\n                {\"size_id\": 2, \"units\": 50},\r\n                {\"size_id\": 4, \"units\": 30}\r\n            ]\r\n        },\r\n        {\r\n            \"hex_code\": \"#27AE60\", \r\n            \"sizes\": [\r\n                {\"size_id\": 2, \"units\": 20}, \r\n                {\"size_id\": 3, \"units\": 40}\r\n            ]\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/products",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "products/{product}",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"const jsonResponse = pm.response.json();\r",
+											"pm.test(\"Response contains product and productColors keys\", function () {\r",
+											"    pm.expect(jsonResponse).to.have.all.keys('product', 'productColors');\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept": true
+								}
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/products/{{product_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"products",
+										"{{product_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "products/{product}",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept": true
+								}
+							},
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"generic shirt\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/products/{{product_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"products",
+										"{{product_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "products/{product}",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept": true
+								}
+							},
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/products/{{product_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"products",
+										"{{product_id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "failure",
+					"item": [
+						{
+							"name": "product does't exist",
+							"item": [
+								{
+									"name": "products/{product}",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"pm.collectionVariables.set(\"id_doesn't_exist\", 1000000000000);"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 404\", function () {\r",
+													"    pm.response.to.have.status(404);\r",
+													"});\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/api/products/{{id_doesn't_exist}}",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"products",
+												"{{id_doesn't_exist}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "products/{product}",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 404\", function () {\r",
+													"    pm.response.to.have.status(404);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"nameasss\": \"generic shirt\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/api/products/{{id_doesn't_exist}}",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"products",
+												"{{id_doesn't_exist}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "products/{product}",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 404\", function () {\r",
+													"    pm.response.to.have.status(404);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/api/products/{{id_doesn't_exist}}",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"products",
+												"{{id_doesn't_exist}}"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Unauthenticated requests",
+							"item": [
+								{
+									"name": "products",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 401\", function () {\r",
+													"    pm.response.to.have.status(401);\r",
+													"});\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "",
+												"value": "",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"polo shirt\",\r\n    \"category_id\": 1,\r\n    \"gender_id\": 1,\r\n    \"description\": \"Good and comfort\" ,\r\n    \"price\": 500,\r\n    \"photo_path\": \"https://m.media-amazon.com/images/I/31rTv9sl3TS._AC_SY780_.jpg\",\r\n    \"colors\": [\r\n        {\r\n            \"hex_code\": \"#7133FF\", \r\n            \"sizes\": [\r\n                {\"size_id\": 1, \"units\": 10}, \r\n                {\"size_id\": 2, \"units\": 5},\r\n                {\"size_id\": 4, \"units\": 7}\r\n            ]\r\n        },\r\n        {\r\n            \"hex_code\": \"#27AE60\", \r\n            \"sizes\": [\r\n                {\"size_id\": 2, \"units\": 20}, \r\n                {\"size_id\": 3, \"units\": 40}\r\n            ]\r\n        }\r\n    ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/api/products",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"products"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "products/{product}",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 401\", function () {\r",
+													"    pm.response.to.have.status(401);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"nameasss\": \"generic shirt\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/api/products/{{product_id}}",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"products",
+												"{{product_id}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "products/{product}",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 401\", function () {\r",
+													"    pm.response.to.have.status(401);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/api/products/{{product_id}}",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"products",
+												"{{product_id}}"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "products",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 422\", function () {\r",
+											"    pm.response.to.have.status(422);\r",
+											"});\r",
+											"const jsonResponse = pm.response.json();\r",
+											"pm.expect(jsonResponse).to.have.property('errors');\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"category_id\": 1,\r\n    \"gender_id\": 1,\r\n    \"description\": \"Good and comfort\" ,\r\n    \"price\": 500,\r\n    \"photo_path\": \"https://m.media-amazon.com/images/I/31rTv9sl3TS._AC_SY780_.jpg\",\r\n    \"colors\": [\r\n        {\r\n            \"hex_code\": \"#7133FF\", \r\n            \"sizes\": [\r\n                {\"size_id\": 1, \"units\": 10}, \r\n                {\"size_id\": 2, \"units\": 5},\r\n                {\"size_id\": 4, \"units\": 7}\r\n            ]\r\n        },\r\n        {\r\n            \"hex_code\": \"#27AE60\", \r\n            \"sizes\": [\r\n                {\"size_id\": 2, \"units\": 20}, \r\n                {\"size_id\": 3, \"units\": 40}\r\n            ]\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/products",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "products",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept": true
+								}
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/productssssssss",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"productssssssss"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "cart_item",
+			"item": [
+				{
+					"name": "success",
+					"item": [
+						{
+							"name": "cart_item",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"const baseURL = pm.collectionVariables.get(\"base_url\");\r",
+											"const requestBody = {\r",
+											"    \"name\": \"polo pants\",\r",
+											"    \"category_id\": 1,\r",
+											"    \"gender_id\": 1,\r",
+											"    \"description\": \"Good and comfort\" ,\r",
+											"    \"price\": 200,\r",
+											"    \"photo_path\": \"https://m.media-amazon.com/images/I/31rTv9sl3TS._AC_SY780_.jpg\",\r",
+											"    \"colors\": [\r",
+											"        {\r",
+											"            \"hex_code\": \"#7133FF\", \r",
+											"            \"sizes\": [\r",
+											"                {\"size_id\": 1, \"units\": 20}, \r",
+											"                {\"size_id\": 2, \"units\": 50},\r",
+											"                {\"size_id\": 4, \"units\": 30}\r",
+											"            ]\r",
+											"        },\r",
+											"        {\r",
+											"            \"hex_code\": \"#27AE60\", \r",
+											"            \"sizes\": [\r",
+											"                {\"size_id\": 2, \"units\": 60}, \r",
+											"                {\"size_id\": 3, \"units\": 40}\r",
+											"            ]\r",
+											"        }\r",
+											"    ]\r",
+											"};\r",
+											"const req = {\r",
+											"    url: baseURL + \"/api/products\",\r",
+											"    method: \"POST\",\r",
+											"    header: {\r",
+											"        \"Content-Type\": \"application/json\",\r",
+											"        Accept: \"application/json\",\r",
+											"        Authorization: \"Bearer \" + pm.collectionVariables.get(\"api_token\") \r",
+											"    },\r",
+											"    body: {\r",
+											"        mode: \"raw\",\r",
+											"        raw: JSON.stringify(requestBody),\r",
+											"    }\r",
+											"};\r",
+											"\r",
+											"pm.sendRequest(req, function (err, response) {\r",
+											"\r",
+											"    pm.sendRequest(baseURL + \"/api/products/\" + response.json().product_id, function (err, response) {\r",
+											"        pm.collectionVariables.set(\"product_color_id\", response.json().productColors[0].id);\r",
+											"        \r",
+											"    });\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"product_color_id\": {{product_color_id}},\r\n    \"size_id\": 2,\r\n    \"quantity\": 4\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/cart_item",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"cart_item"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "cart_item",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"const jsonResponse = pm.response.json();\r",
+											"\r",
+											"pm.collectionVariables.set(\"cart_item_id\", jsonResponse.cartItems[0].id);\r",
+											"\r",
+											"pm.test('cartItems property type is an array', function () {\r",
+											"    pm.expect(jsonResponse.cartItems).to.be.an(\"array\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/cart_item",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"cart_item"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "cart_item/{cart_item}",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"const jsonResponse = pm.response.json();\r",
+											"pm.test('jsonResponse contains message property', function () {\r",
+											"    pm.expect(jsonResponse).to.have.property(\"message\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/cart_item/{{cart_item_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"cart_item",
+										"{{cart_item_id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "failure",
+					"item": [
+						{
+							"name": "unauthenticated requests",
+							"item": [
+								{
+									"name": "cart_item",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 401\", function () {\r",
+													"    pm.response.to.have.status(401);\r",
+													"});\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"product_color_id\": {{product_color_id}},\r\n    \"size_id\": 2,\r\n    \"quantity\": 4\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/api/cart_item",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"cart_item"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "cart_item/{cart_item} Copy",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 401\", function () {\r",
+													"    pm.response.to.have.status(401);\r",
+													"});\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/api/cart_item/{{cart_item_id}}",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"cart_item",
+												"{{cart_item_id}}"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"auth": {
+								"type": "noauth"
+							},
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "cart_item",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/cart_itemss",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"cart_itemss"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "cart_item [quantity exceeded what in stock]",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 422\", function () {\r",
+											"    pm.response.to.have.status(422);\r",
+											"});\r",
+											"\r",
+											"const jsonResponse = pm.response.json();\r",
+											"pm.test('cart quantity should be less than or equal stock quantity', function () {\r",
+											"    pm.expect(jsonResponse.errors).to.have.property(\"quantity\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"product_color_id\": {{product_color_id}},\r\n    \"size_id\": 2,\r\n    \"quantity\": 5000000000000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/cart_item",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"cart_item"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "cart_item [size_id doesn't exist in sizes table]",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"product_color_id\": {{product_color_id}},\r\n    \"size_id\": 1000000,\r\n    \"quantity\": 4\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/cart_item",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"cart_item"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "cart_item [size_id doesn't exist within the product_color sizes]",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"product_color_id\": {{product_color_id}},\r\n    \"size_id\": 7,\r\n    \"quantity\": 4\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/cart_item",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"cart_item"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "cart_item [product_color_id doesn't exist]",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"product_color_id\": {{id_doesn't_exist}},\r\n    \"size_id\": 2,\r\n    \"quantity\": 4\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/cart_item",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"cart_item"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "cart_item/{cart_item}",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/cart_item/{{id_doesn't_exist}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"cart_item",
+										"{{id_doesn't_exist}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "orders",
+			"item": [
+				{
+					"name": "success",
+					"item": [
+						{
+							"name": "orders",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"const requestBody = {\r",
+											"    \"product_color_id\": pm.collectionVariables.get(\"product_color_id\"),\r",
+											"    \"size_id\": 2,\r",
+											"    \"quantity\": 4\r",
+											"};\r",
+											"\r",
+											"const req = {\r",
+											"    url: pm.collectionVariables.get(\"base_url\") + \"/api/cart_item\",\r",
+											"    method: \"POST\",\r",
+											"    header: {\r",
+											"        \"Content-Type\": \"application/json\",\r",
+											"        Accept: \"application/json\",\r",
+											"        Authorization: \"Bearer \" + pm.collectionVariables.get(\"api_token\")\r",
+											"    },\r",
+											"    body: {\r",
+											"        mode: \"raw\",\r",
+											"        raw: JSON.stringify(requestBody)\r",
+											"    }\r",
+											"};\r",
+											"\r",
+											"pm.sendRequest(req, function (err, response) {\r",
+											"    console.log(\"result for me \", response.json());\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"const jsonResponse = pm.response.json();\r",
+											"\r",
+											"pm.collectionVariables.set(\"order_id\", jsonResponse.order.id);\r",
+											"\r",
+											"pm.test(\"jsonResponse contains order property\", function () {\r",
+											"    pm.expect(jsonResponse).to.have.property(\"order\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/orders",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"orders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "orders",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"const jsonResponse = pm.response.json();\r",
+											"\r",
+											"pm.test(\"jsonResponse contains orders property\", function () {\r",
+											"    pm.expect(jsonResponse).to.have.property(\"orders\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"orders property type is an array\", function () {\r",
+											"    pm.expect(jsonResponse.orders).to.be.an(\"array\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/orders",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"orders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "orders/{order}",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"const jsonResponse = pm.response.json();\r",
+											"\r",
+											"\r",
+											"pm.test(\"jsonResponse contains order property\", function () {\r",
+											"    pm.expect(jsonResponse).to.have.property(\"order\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"order property type is an object\", function () {\r",
+											"    pm.expect(jsonResponse.order).to.be.an(\"object\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/orders/{{order_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"orders",
+										"{{order_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "orders/{order}",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"const jsonResponse = pm.response.json();\r",
+											"\r",
+											"pm.test(\"jsonResponse contains message property\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"is_delivered\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/orders/{{order_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"orders",
+										"{{order_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "orders/{order}",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"const jsonResponse = pm.response.json();\r",
+											"\r",
+											"pm.test(\"jsonResponse contains message property\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/orders/{{order_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"orders",
+										"{{order_id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "failure",
+					"item": [
+						{
+							"name": "unautheticated requests",
+							"item": [
+								{
+									"name": "orders",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"const requestBody = {\r",
+													"    \"product_color_id\": pm.collectionVariables.get(\"product_color_id\"),\r",
+													"    \"size_id\": 2,\r",
+													"    \"quantity\": 4\r",
+													"};\r",
+													"\r",
+													"const req = {\r",
+													"    url: pm.collectionVariables.get(\"base_url\") + \"/api/cart_item\",\r",
+													"    method: \"POST\",\r",
+													"    header: {\r",
+													"        \"Content-Type\": \"application/json\",\r",
+													"        Accept: \"application/json\",\r",
+													"        Authorization: \"Bearer \" + pm.collectionVariables.get(\"api_token\")\r",
+													"    },\r",
+													"    body: {\r",
+													"        mode: \"raw\",\r",
+													"        raw: JSON.stringify(requestBody)\r",
+													"    }\r",
+													"};\r",
+													"\r",
+													"pm.sendRequest(req, function (err, response) {\r",
+													"    console.log(\"result for me \", response.json());\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 401\", function () {\r",
+													"    pm.response.to.have.status(401);\r",
+													"});\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/api/orders",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"orders"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "orders",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 401\", function () {\r",
+													"    pm.response.to.have.status(401);\r",
+													"});\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/api/orders",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"orders"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "orders/{order}",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 401\", function () {\r",
+													"    pm.response.to.have.status(401);\r",
+													"});\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/api/orders/{{order_id}}",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"orders",
+												"{{order_id}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "orders/{order}",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 401\", function () {\r",
+													"    pm.response.to.have.status(401);\r",
+													"});\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"is_delivered\": true\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/api/orders/{{order_id}}",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"orders",
+												"{{order_id}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "orders/{order}",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 401\", function () {\r",
+													"    pm.response.to.have.status(401);\r",
+													"});\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/api/orders/{{order_id}}",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"orders",
+												"{{order_id}}"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"auth": {
+								"type": "noauth"
+							},
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "orders",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"const requestBody = {\r",
+											"    \"product_color_id\": pm.collectionVariables.get(\"product_color_id\"),\r",
+											"    \"size_id\": 2,\r",
+											"    \"quantity\": 4\r",
+											"};\r",
+											"\r",
+											"const req = {\r",
+											"    url: pm.collectionVariables.get(\"base_url\") + \"/api/cart_item\",\r",
+											"    method: \"POST\",\r",
+											"    header: {\r",
+											"        \"Content-Type\": \"application/json\",\r",
+											"        Accept: \"application/json\",\r",
+											"        Authorization: \"Bearer \" + pm.collectionVariables.get(\"api_token\")\r",
+											"    },\r",
+											"    body: {\r",
+											"        mode: \"raw\",\r",
+											"        raw: JSON.stringify(requestBody)\r",
+											"    }\r",
+											"};\r",
+											"\r",
+											"pm.sendRequest(req, function (err, response) {\r",
+											"    console.log(\"result for me \", response.json());\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/orderss",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"orderss"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "orders",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true,
+								"disabledSystemHeaders": {
+									"accept": true
+								}
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{base_url}}/api/ordersaa",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"ordersaa"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "orders/{order}",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept": true
+								}
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/orders/{{id_doesn't_exist}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"orders",
+										"{{id_doesn't_exist}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "orders/{order}",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept": true
+								}
+							},
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"is_delivered\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/orders/{{id_doesn't_exist}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"orders",
+										"{{id_doesn't_exist}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "orders/{order}",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept": true
+								}
+							},
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/orders/{{id_doesn't_exist}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"orders",
+										"{{id_doesn't_exist}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{api_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost"
+		},
+		{
+			"key": "api_token",
+			"value": ""
+		},
+		{
+			"key": "product_id",
+			"value": ""
+		},
+		{
+			"key": "product_color_id",
+			"value": ""
+		},
+		{
+			"key": "variable_key",
+			"value": ""
+		},
+		{
+			"key": "cart_item_id",
+			"value": ""
+		},
+		{
+			"key": "id_doesn't_exist",
+			"value": ""
+		},
+		{
+			"key": "order_id",
+			"value": ""
+		}
+	]
+}

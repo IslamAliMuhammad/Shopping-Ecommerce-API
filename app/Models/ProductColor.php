@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Size;
 use App\Models\CartItem;
 use App\Models\OrderItem;
-
+use App\Models\ColorSize;
 class ProductColor extends Model
 {
     use HasFactory;
@@ -15,7 +15,7 @@ class ProductColor extends Model
     protected $fillable = ['product_id', 'hex_code'];
     
     public function sizes() {
-        return $this->belongsToMany(Size::class, 'color_size', 'product_color_id', 'size_id')->withPivot('units');
+        return $this->belongsToMany(Size::class, 'color_size', 'product_color_id', 'size_id')->using(ColorSize::class)->withPivot('units');
     }
 
     public function product(){

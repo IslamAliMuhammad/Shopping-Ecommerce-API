@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use Database\Seeders\GenderSeeder;
 use Database\Seeders\CategorySeeder;
 use Database\Seeders\SizeSeeder;
+use Database\Seeders\UserSeeder;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -21,6 +22,7 @@ class DatabaseSeeder extends Seeder
             GenderSeeder::class,
             CategorySeeder::class,
             SizeSeeder::class,
+            UserSeeder::class,
         ]);
     }
 }

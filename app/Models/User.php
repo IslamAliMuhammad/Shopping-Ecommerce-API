@@ -10,6 +10,8 @@ use App\Models\Order;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\ProductColor;
 use App\Models\CartItem;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
 class User extends Authenticatable
 {
     use HasFactory, Notifiable, HasApiTokens;
@@ -49,7 +51,11 @@ class User extends Authenticatable
         return $this->hasMany(Order::class, 'user_id');
     }
 
-    public function ProductColors(){
-        return $this->belongsToMany(ProductColor::class, 'cart_item', 'user_id', 'product_color_id')->using(CartItem::class)->withPivot('quantity');
+    public function productColors(){
+        return $this->belongsToMany(ProductColor::class, 'cart_item', 'user_id', 'product_color_id')->using(CartItem::class)->withPivot('size_id', 'quantity');
+    }
+
+    public function cartItems() {
+        return $this->hasMany(CartItem::class);
     }
 }

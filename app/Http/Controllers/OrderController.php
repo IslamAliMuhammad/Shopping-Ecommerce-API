@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
-use App\Models\ProductDetail;
 use Illuminate\Http\Request;
-
+use App\Models\CartItem;
+use App\Models\ColorSize;
 /**
  * @group orders
  */
@@ -22,7 +22,7 @@ class OrderController extends Controller
         //
         $orders = auth()->user()->orders;
 
-        return response()->json(['orders' => $orders], 200);
+        return response()->json(["orders" => $orders], 200);
     }
 
     /**
@@ -34,19 +34,28 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         //
+        $order = Order::create(["user_id" => auth()->id()]);
 
-        $order = Order::create(['user_id' => auth()->id(), 'is_delivered' => false]);
+        $cartItems = auth()->user()->cartItems;
 
-        $quantities = [];
-        foreach(auth()->user()->productDetails as $productDetail){
-            $quantities[] = ['quantity' => $productDetail->pivot->quantity];
+        if(sizeof($cartItems) == 0) {
+            return response()->json(["message" => "Cart is empty."], 404);
         }
 
-        $order->productDetails()->attach(array_combine(auth()->user()->productDetails->pluck('id')->all(), $quantities));
+        $cartItemsFormatted = array_map(function ($arr) {
+            unset($arr["user_id"]);
+            return $arr;
+        }, json_decode(json_encode($cartItems->all()), true));
 
-        auth()->user()->productDetails()->detach();
+        $orderItems = $order->orderItems()->createMany($cartItemsFormatted);
 
-        return response()->json(['message' => 'Order successfully Placed', 'order' => $order], 200);
+        CartItem::destroy($cartItems);
+
+        foreach($orderItems as $orderItem) {
+            $colorSize = ColorSize::colorSizeModel($orderItem->productColor, $orderItem->size);
+            $colorSize->decreaseUnits($orderItem->quantity);
+        }
+        return response()->json(["message" => "Order successfully placed!", "order" => $order], 200);
     }
 
     /**
@@ -57,9 +66,9 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
-
-        return response()->json(['order' => $order], 200);
+        // 
+        $order = Order::with(['orderItems', 'orderItems.productColor.product', 'orderItems.size'])->where("id", $order->id)->firstOrFail();
+        return response()->json(["order" => $order], 200);
     }
 
     /**
@@ -80,7 +89,7 @@ class OrderController extends Controller
 
         $order->update($validated);
         
-        return response()->json(['message' => 'Order updated successfully'], 200);
+        return response()->json(['message' => 'Order updated successfully!'], 200);
     }
 
     /**
@@ -93,9 +102,11 @@ class OrderController extends Controller
     {
         //
         $this->authorize('delete', $order);
+        
+        $order->returnOrderToStock();
 
         $order->delete();
-
-        return response()->json(['message' => 'Order successfully deleted '], 200);
+        
+        return response()->json(['message' => 'Order successfully deleted!'], 200);
     }
 }

@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
         $user = new User();
         $user->name = 'Admin';
         $user->email = 'admin@laravel.com';
-        $user->password = bcrypt('01143101020');
+        $user->password = bcrypt('123456789');
         $user->is_admin = true;
         $user->save();
     }
